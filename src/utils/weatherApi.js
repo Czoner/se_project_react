@@ -1,5 +1,5 @@
-const latitude = 44.34;
-const longitude = 10.99;
+const latitude = 40.71;
+const longitude = -74.0;
 const APIkey = "5a561cf712511e9f77052102aa1154bd";
 
 export const getForecastWeather = () => {
@@ -12,13 +12,19 @@ export const getForecastWeather = () => {
       return Promise.reject(`Error: ${res.status}`);
     }
   });
+  // .then((data) => {
+  //   return parseWeatherData(data);
+  // });
   return weatherApi;
 };
 
 export const parseWeatherData = (data) => {
   const main = data.main;
-  const weather = data.weather;
   const tempature = main && main.temp;
-  console.log(Math.ceil(tempature));
   return Math.ceil(tempature);
+};
+
+export const weatherMain = (data) => {
+  const weather = data.weather[0].main.toLowerCase();
+  console.log(weather);
 };

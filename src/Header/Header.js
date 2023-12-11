@@ -7,15 +7,19 @@ const Header = ({ onCreateModal }) => {
         <div>
           <img src="/images/Logo.svg" alt="Logo" />
         </div>
-        <div>Date</div>
+        <p className="header__date">December 10, New York City</p>
       </div>
       <div className="header__avatar-logo">
         <div>
-          <button type="text" onClick={onCreateModal}>
-            Add New Clothes
+          <button
+            type="text"
+            onClick={onCreateModal}
+            className="header__button"
+          >
+            + Add clothes
           </button>
         </div>
-        <div>Name</div>
+        <p className="header__name">Terrence Tegegne</p>
         <div>
           <img src="/images/Ellipse 18.svg" alt="Logo" />
         </div>

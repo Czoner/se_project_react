@@ -8,20 +8,19 @@ const weatherOptions = [
   { url: "/images/Day/cloudy.svg", day: true, type: "cloudy" },
   { url: "/images/Day/sunny.svg", day: true, type: "sunny" },
   { url: "/images/Night/moon.svg", day: false, type: "moon" },
-  { url: "/images/Night/nightCloud.svg", day: false, type: "nightCloud" },
-  { url: "/images/Night/nightRain.svg", day: false, type: "nightRain" },
-  { url: "/images/Night/nightStorm.svg", day: false, type: "nightStorm" },
-  { url: "/images/Night/nightSnow.svg", day: false, type: "nightSnow" },
-  { url: "/images/Night/nightFog.svg", day: false, type: "nightFog" },
+  { url: "/images/Night/nightCloud.svg", day: false, type: "cloudy" },
+  { url: "/images/Night/nightRain.svg", day: false, type: "rain" },
+  { url: "/images/Night/nightStorm.svg", day: false, type: "storm" },
+  { url: "/images/Night/nightSnow.svg", day: false, type: "snow" },
+  { url: "/images/Night/nightFog.svg", day: false, type: "fog" },
 ];
 
-const WeatherCard = ({ day, type, weatherTemp = "" }) => {
-  const imageSrc = weatherOptions.filter((i) => {
-    return i.day === day && i.type === type;
+const WeatherCard = ({ day, weatherType, weatherTemp = "" }) => {
+  const imageSrc = weatherOptions.find((i) => {
+    return i.day === day && i.type === weatherType;
   });
-  //console.log(imageSrc[0].url);
-
-  const imageSrcUrl = imageSrc[0].url || "";
+  console.log(imageSrc);
+  const imageSrcUrl = imageSrc?.url || "";
   return (
     <section className="weather" id="weather">
       <div className="weather_info">{weatherTemp} F</div>

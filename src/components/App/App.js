@@ -1,5 +1,6 @@
 import Header from "../../Header/Header";
 import "./App.css";
+import "../../Footer/Footer.css";
 import Main from "../../Main/Main";
 import Footer from "../../Footer/Footer";
 import ModalForm from "../../ModalForm/ModalForm";
@@ -8,10 +9,10 @@ import ItemModal from "../../ItemModal/ItemModal";
 import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
 
 function App() {
-  const weatherTemp = "7° F";
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
+  const [weatherType, setWeatherType] = useState("");
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -29,16 +30,19 @@ function App() {
   useEffect(() => {
     getForecastWeather().then((data) => {
       const tempature = parseWeatherData(data);
+      setWeatherType(data.weather[0].main.toLowerCase());
       setTemp(tempature);
     });
-  });
-
-  console.log(temp);
+  }, []);
 
   return (
     <div>
       <Header onCreateModal={handleCreateModal} />
-      <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
+      <Main
+        weatherTemp={temp}
+        weatherType={weatherType}
+        onSelectCard={handleSelectedCard}
+      />
       <Footer />
       {activeModal === "create" && (
         <ModalForm title="New gardment" onClose={handleCloseModal}>
