@@ -23,8 +23,3 @@ export const parseWeatherData = (data) => {
   const tempature = main && main.temp;
   return Math.ceil(tempature);
 };
-
-export const weatherMain = (data) => {
-  const weather = data.weather[0].main.toLowerCase();
-  console.log(weather);
-};

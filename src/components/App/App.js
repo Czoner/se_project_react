@@ -13,6 +13,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [weatherType, setWeatherType] = useState("");
+  const [days, setDay] = useState({});
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -31,6 +32,11 @@ function App() {
     getForecastWeather().then((data) => {
       const tempature = parseWeatherData(data);
       setWeatherType(data.weather[0].main.toLowerCase());
+      if (data?.sys.sunset > data?.sys.sunrise) {
+        setDay(true);
+      } else {
+        setDay(false);
+      }
       setTemp(tempature);
     });
   }, []);
@@ -42,6 +48,7 @@ function App() {
         weatherTemp={temp}
         weatherType={weatherType}
         onSelectCard={handleSelectedCard}
+        day={days}
       />
       <Footer />
       {activeModal === "create" && (

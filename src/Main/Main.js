@@ -3,7 +3,7 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import { useMemo } from "react";
 
-function Main({ weatherTemp, weatherType, onSelectCard }) {
+function Main({ weatherTemp, weatherType, onSelectCard, days }) {
   const weatherTemperature = useMemo(() => {
     if (weatherTemp >= 86) {
       return "hot";
@@ -17,13 +17,14 @@ function Main({ weatherTemp, weatherType, onSelectCard }) {
     return item.weather.toLowerCase() === weatherTemperature;
   });
 
+  console.log(days);
   // Pass weatherType to WeatherCard
   return (
     <main className="main">
       <WeatherCard
-        day={true}
-        type={weatherType}
-        weatherTemp={weatherTemperature}
+        day={days}
+        weatherType={weatherType}
+        weatherTemp={weatherTemp}
       />
       <section className="card_section" id="card-selection">
         Today is {weatherTemp} F / You may want to wear:
