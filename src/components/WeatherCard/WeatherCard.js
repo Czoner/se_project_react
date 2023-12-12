@@ -52,7 +52,10 @@ const WeatherCard = ({ day, weatherType, weatherTemp = "" }) => {
     <section className="weather" id="weather">
       <div className="weather_info">{weatherTemp} F</div>
       <div>
-        <img src={imageSrcUrl} className="weather_image" />
+        <img
+          src={require("../images/Night/nightCloud.svg").default}
+          className="weather_image"
+        />
       </div>
     </section>
   );

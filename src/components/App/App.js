@@ -1,11 +1,11 @@
-import Header from "../../Header/Header";
+import Header from "../Header/Header";
 import "./App.css";
-import "../../Footer/Footer.css";
-import Main from "../../Main/Main";
-import Footer from "../../Footer/Footer";
+import "../Footer/Footer.css";
+import Main from "../Main/Main";
+import Footer from "../Footer/Footer";
 import ModalForm from "../../ModalForm/ModalForm";
 import { useEffect, useState } from "react";
-import ItemModal from "../../ItemModal/ItemModal";
+import ItemModal from "../ItemModal/ItemModal";
 import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
 
 function App() {
