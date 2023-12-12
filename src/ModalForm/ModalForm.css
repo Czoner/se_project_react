@@ -95,7 +95,7 @@
   position: absolute;
   top: 20px;
   right: 28px;
-  background-image: url("/public/images/Close.svg");
+  background-image: url("../images/Close.svg");
   border: none;
   background-color: transparent;
   background-repeat: no-repeat;

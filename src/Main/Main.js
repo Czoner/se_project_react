@@ -3,7 +3,7 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import { useMemo } from "react";
 
-function Main({ weatherTemp, weatherType, onSelectCard, days }) {
+function Main({ weatherTemp, weatherType, onSelectCard, day }) {
   const weatherTemperature = useMemo(() => {
     if (weatherTemp >= 86) {
       return "hot";
@@ -17,12 +17,11 @@ function Main({ weatherTemp, weatherType, onSelectCard, days }) {
     return item.weather.toLowerCase() === weatherTemperature;
   });
 
-  console.log(days);
   // Pass weatherType to WeatherCard
   return (
     <main className="main">
       <WeatherCard
-        day={days}
+        day={day}
         weatherType={weatherType}
         weatherTemp={weatherTemp}
       />

@@ -32,7 +32,7 @@ function App() {
     getForecastWeather().then((data) => {
       const tempature = parseWeatherData(data);
       setWeatherType(data.weather[0].main.toLowerCase());
-      if (data?.sys.sunset > data?.sys.sunrise) {
+      if (data?.sys.sunset < data?.sys.sunrise) {
         setDay(true);
       } else {
         setDay(false);

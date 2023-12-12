@@ -1,25 +1,53 @@
 import { type } from "@testing-library/user-event/dist/type";
 
 const weatherOptions = [
-  { url: "/images/Day/rain.svg", day: true, type: "rain" },
-  { url: "/images/Day/storm.svg", day: true, type: "storm" },
-  { url: "/images/Day/snow.svg", day: true, type: "snow" },
-  { url: "/images/Day/fog.svg", day: true, type: "fog" },
-  { url: "/images/Day/cloudy.svg", day: true, type: "clouds" },
-  { url: "/images/Day/sunny.svg", day: true, type: "sunny" },
-  { url: "/images/Night/moon.svg", day: false, type: "moon" },
-  { url: "/images/Night/nightCloud.svg", day: false, type: "clouds" },
-  { url: "/images/Night/nightRain.svg", day: false, type: "rain" },
-  { url: "/images/Night/nightStorm.svg", day: false, type: "storm" },
-  { url: "/images/Night/nightSnow.svg", day: false, type: "snow" },
-  { url: "/images/Night/nightFog.svg", day: false, type: "fog" },
+  { url: require("../images/Day/rain.svg").default, day: true, type: "rain" },
+  { url: require("../images/Day/storm.svg").default, day: true, type: "storm" },
+  { url: require("../images/Day/snow.svg").default, day: true, type: "snow" },
+  { url: require("../images/Day/fog.svg").default, day: true, type: "fog" },
+  {
+    url: require("../images/Day/cloudy.svg").default,
+    day: true,
+    type: "clouds",
+  },
+  { url: require("../images/Day/sunny.svg").default, day: true, type: "sunny" },
+  {
+    url: require("../images/Night/moon.svg").default,
+    day: false,
+    type: "moon",
+  },
+  {
+    url: require("../images/Night/nightCloud.svg").default,
+    day: false,
+    type: "clouds",
+  },
+  {
+    url: require("../images/Night/nightRain.svg").default,
+    day: false,
+    type: "rain",
+  },
+  {
+    url: require("../images/Night/nightStorm.svg").default,
+    day: false,
+    type: "storm",
+  },
+  {
+    url: require("../images/Night/nightSnow.svg").default,
+    day: false,
+    type: "snow",
+  },
+  {
+    url: require("../images/Night/nightFog.svg").default,
+    day: false,
+    type: "fog",
+  },
 ];
 
-const WeatherCard = ({ days, weatherType, weatherTemp = "" }) => {
+const WeatherCard = ({ day, weatherType, weatherTemp = "" }) => {
   const imageSrc = weatherOptions.find((i) => {
-    return i.day === days && i.type === weatherType;
+    return i.day === day && i.type === weatherType;
   });
-  const imageSrcUrl = imageSrc?.url || "";
+  const imageSrcUrl = imageSrc?.url || "../images/Day/sunny.svg";
   return (
     <section className="weather" id="weather">
       <div className="weather_info">{weatherTemp} F</div>
