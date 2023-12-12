@@ -47,7 +47,7 @@ const WeatherCard = ({ day, weatherType, weatherTemp = "" }) => {
   const imageSrc = weatherOptions.find((i) => {
     return i.day === day && i.type === weatherType;
   });
-  const imageSrcUrl = imageSrc?.url || "../images/Day/sunny.svg";
+  const imageSrcUrl = imageSrc?.url || "";
   return (
     <section className="weather" id="weather">
       <div className="weather_info">{weatherTemp} F</div>
