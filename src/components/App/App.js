@@ -13,7 +13,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [weatherType, setWeatherType] = useState("");
-  const [days, isDay] = useState();
+  const [days, isDay] = useState(true);
 
   const handleCreateModal = () => {
     setActiveModal("create");
