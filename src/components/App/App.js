@@ -3,7 +3,7 @@ import "./App.css";
 import "../Footer/Footer.css";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import ModalForm from "../../ModalForm/ModalForm";
+import ModalForm from "../ModalForm/ModalForm";
 import { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
 import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
@@ -13,7 +13,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [weatherType, setWeatherType] = useState("");
-  const [days, setDay] = useState({});
+  const [days, isDay] = useState();
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -29,16 +29,20 @@ function App() {
   };
 
   useEffect(() => {
-    getForecastWeather().then((data) => {
-      const tempature = parseWeatherData(data);
-      setWeatherType(data.weather[0].main.toLowerCase());
-      if (data?.sys.sunset < data?.sys.sunrise) {
-        setDay(true);
-      } else {
-        setDay(false);
-      }
-      setTemp(tempature);
-    });
+    getForecastWeather()
+      .then((data) => {
+        const tempature = parseWeatherData(data);
+        setWeatherType(data.weather[0].main.toLowerCase());
+        if (data?.sys.sunset < data?.sys.sunrise) {
+          isDay(true);
+        } else {
+          isDay(false);
+        }
+        setTemp(tempature);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, []);
 
   return (
@@ -52,7 +56,11 @@ function App() {
       />
       <Footer />
       {activeModal === "create" && (
-        <ModalForm title="New gardment" onClose={handleCloseModal}>
+        <ModalForm
+          title="New gardment"
+          buttontext="Add garment"
+          onClose={handleCloseModal}
+        >
           <label className="modal__label">
             Name
             <input
@@ -81,7 +89,7 @@ function App() {
                 name="weather"
                 className="radio__dot"
               />
-              <label className="weather__name" for="hot">
+              <label className="weather__name" htmlFor="hot">
                 Hot
               </label>
             </li>
@@ -93,7 +101,7 @@ function App() {
                 name="weather"
                 className="radio__dot"
               />
-              <label className="weather__name" for="warm">
+              <label className="weather__name" htmlFor="warm">
                 Warm
               </label>
             </li>
@@ -105,7 +113,7 @@ function App() {
                 name="weather"
                 className="radio__dot"
               />
-              <label className="weather__name" for="cold">
+              <label className="weather__name" htmlFor="cold">
                 Cold
               </label>
             </li>
