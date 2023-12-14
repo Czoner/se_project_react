@@ -3,7 +3,7 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 
 function Main({ weatherTemp, weatherType, onSelectCard, day }) {
-  const weatherTemperature = () => {
+  const getWeatherTemperature = () => {
     if (weatherTemp >= 86) {
       return "hot";
     } else if (weatherTemp >= 66 && weatherTemp <= 85) {
@@ -12,9 +12,9 @@ function Main({ weatherTemp, weatherType, onSelectCard, day }) {
       return "cold";
     }
   };
-  const getweatherType = weatherTemperature();
+  weatherType = getWeatherTemperature();
   const filteredCards = defaultClothingItems.filter((item) => {
-    return item.weather.toLowerCase() === weatherTemperature();
+    return item.weather.toLowerCase() === getWeatherTemperature();
   });
 
   // Pass weatherType to WeatherCard
@@ -22,7 +22,7 @@ function Main({ weatherTemp, weatherType, onSelectCard, day }) {
     <main className="main">
       <WeatherCard
         day={day}
-        weatherType={getweatherType}
+        weatherType={weatherType}
         weatherTemp={weatherTemp}
       />
       <section className="card_section" id="card-selection">
