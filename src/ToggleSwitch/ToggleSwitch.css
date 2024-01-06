@@ -1,0 +1,52 @@
+.switch {
+  display: flex;
+  position: relative;
+  font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.switch_box {
+  border-radius: 25px;
+  border: 2px solid black;
+  width: 56px;
+  height: 28px;
+  appearance: none;
+}
+
+.switch__slider {
+  border-radius: 20px;
+  width: 28px;
+  height: 28px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+}
+
+.switch__slider_F {
+  top: 3px;
+  left: 4px;
+}
+
+.switch__slider_C {
+  top: 3px;
+  left: 30px;
+}
+
+.switch__active {
+  color: white;
+}
+
+.switch__temp_F {
+  position: absolute;
+  left: 14px;
+  top: -4px;
+}
+
+.switch__temp_C {
+  position: absolute;
+  left: 40px;
+  top: -4px;
+}

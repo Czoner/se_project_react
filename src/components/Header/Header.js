@@ -1,6 +1,7 @@
 import "./Header.css";
 import logoImg from "../../images/Logo.svg";
 import avitar from "../../images/Ellipse 18.svg";
+import ToggleSwitch from "../../ToggleSwitch/ToggleSwitch";
 
 const Header = ({ onCreateModal }) => {
   return (
@@ -12,6 +13,7 @@ const Header = ({ onCreateModal }) => {
         <p className="header__date">December 10, New York City</p>
       </div>
       <div className="header__avatar-logo">
+        <ToggleSwitch />
         <div>
           <button
             type="text"
