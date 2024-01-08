@@ -2,14 +2,15 @@ import "./Header.css";
 import logoImg from "../../images/Logo.svg";
 import avitar from "../../images/Ellipse 18.svg";
 import ToggleSwitch from "../../ToggleSwitch/ToggleSwitch";
+import { Link } from "react-router-dom";
 
 const Header = ({ onCreateModal }) => {
   return (
     <header className="header">
       <div className="header__logo">
-        <div>
+        <Link to="/">
           <img src={logoImg} alt="Logo" />
-        </div>
+        </Link>
         <p className="header__date">December 10, New York City</p>
       </div>
       <div className="header__avatar-logo">
@@ -23,7 +24,9 @@ const Header = ({ onCreateModal }) => {
             + Add clothes
           </button>
         </div>
-        <p className="header__name">Terrence Tegegne</p>
+        <Link className="header__name" to="/profile">
+          Terrence Tegegne
+        </Link>
         <div>
           <img src={avitar} alt="Logo" />
         </div>

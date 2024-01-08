@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
 import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
 import CurrentTempatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+import { Switch, Route } from "react-router-dom";
+import AddItemModal from "../../AddItemModal/AddItemModal";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -35,6 +37,10 @@ function App() {
     setSelectedCard(card);
   };
 
+  const onAddItem = (values) => {
+    console.log(values);
+  };
+
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
@@ -58,77 +64,24 @@ function App() {
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
         <Header onCreateModal={handleCreateModal} />
-        <Main
-          weatherTemp={temp}
-          weatherType={weatherType}
-          onSelectCard={handleSelectedCard}
-          day={days}
-        />
+        <Switch>
+          <Route exact path="/">
+            <Main
+              weatherTemp={temp}
+              weatherType={weatherType}
+              onSelectCard={handleSelectedCard}
+              day={days}
+            />
+          </Route>
+          <Route path="/profile">Profile Chosen</Route>
+        </Switch>
         <Footer />
         {activeModal === "create" && (
-          <ModalForm
-            title="New gardment"
-            buttontext="Add garment"
-            onClose={handleCloseModal}
-          >
-            <label className="modal__label">
-              Name
-              <input
-                type="text"
-                name="name"
-                className="modal__input"
-                placeholder="Name"
-              />
-            </label>
-            <label className="modal__label">
-              Image
-              <input
-                type="url"
-                name="link"
-                className="modal__input"
-                placeholder="Image URL"
-              />
-            </label>
-            <p className="weather__group">Select the weather type</p>
-            <ul className="weather__list">
-              <li className="weather__type">
-                <input
-                  type="radio"
-                  id="hot"
-                  value="hot"
-                  name="weather"
-                  className="radio__dot"
-                />
-                <label className="weather__name" htmlFor="hot">
-                  Hot
-                </label>
-              </li>
-              <li className="weather__type">
-                <input
-                  type="radio"
-                  id="warm"
-                  value="warm"
-                  name="weather"
-                  className="radio__dot"
-                />
-                <label className="weather__name" htmlFor="warm">
-                  Warm
-                </label>
-              </li>
-              <li className="weather__type">
-                <input
-                  type="radio"
-                  id="cold"
-                  value="cold"
-                  name="weather"
-                  className="radio__dot"
-                />
-                <label className="weather__name" htmlFor="cold">
-                  Cold
-                </label>
-              </li>
-            </ul>
-          </ModalForm>
+          <AddItemModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "create"}
+            onAddItem={onAddItem}
+          />
         )}
 
         {activeModal === "preview" && (
