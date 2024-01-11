@@ -1,4 +1,5 @@
 import "./ModalForm.css";
+import React from "react";
 
 const ModalForm = ({
   children,
@@ -23,7 +24,6 @@ const ModalForm = ({
           <button
             type="submit"
             className="weather__button weather__button_disabled"
-            disabled
           >
             {buttontext}
           </button>

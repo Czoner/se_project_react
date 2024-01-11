@@ -10,6 +10,8 @@ import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
 import CurrentTempatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { Switch, Route } from "react-router-dom";
 import AddItemModal from "../../AddItemModal/AddItemModal";
+import { getItems, postItems } from "../../utils/api";
+import Profile from "../../Profile/Profile";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -18,6 +20,7 @@ function App() {
   const [weatherType, setWeatherType] = useState("");
   const [days, isDay] = useState(true);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [clothingItems, setClothingItems] = useState([]);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -37,6 +40,12 @@ function App() {
     setSelectedCard(card);
   };
 
+  const handleAddItemSubmit = (item) => {
+    setClothingItems([item, ...clothingItems]);
+  };
+
+  const handleRemovingItem = () => {};
+
   const onAddItem = (values) => {
     console.log(values);
   };
@@ -52,6 +61,16 @@ function App() {
           isDay(false);
         }
         setTemp(tempature);
+        getItems().then((res) => {
+          setClothingItems(res);
+        });
+        postItems({
+          name: clothingItems.name,
+          imageUrl: clothingItems.imageUrl,
+          weather: clothingItems.weather,
+        }).then((res) => {
+          setClothingItems([res, ...clothingItems]);
+        });
       })
       .catch((err) => {
         console.error(err);
@@ -71,9 +90,12 @@ function App() {
               weatherType={weatherType}
               onSelectCard={handleSelectedCard}
               day={days}
+              clothingItems={clothingItems}
             />
           </Route>
-          <Route path="/profile">Profile Chosen</Route>
+          <Route path="/profile">
+            <Profile />
+          </Route>
         </Switch>
         <Footer />
         {activeModal === "create" && (
