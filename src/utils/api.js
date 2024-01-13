@@ -13,6 +13,7 @@ export const getItems = () =>
 export const postItems = ({ name, imageUrl, weather }) =>
   fetch(`${baseUrl}/items`, {
     method: "POST",
+    headers: { "Content-type": "application/json" },
     body: JSON.stringify({
       name: name,
       imageUrl: imageUrl,

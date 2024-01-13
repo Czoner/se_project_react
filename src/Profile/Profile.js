@@ -1,9 +1,14 @@
 import React from "react";
+import SideBar from "../SideBar/SideBar";
 
 const Profile = () => {
   <div className="profile">
-    <section className="profile-sidebar"></section>
-    <section className="profile-clothes"></section>
+    <section className="profile-sidebar">
+      <SideBar />
+    </section>
+    <section className="profile-clothesSection">
+      {/* <ClothesSection /> */}
+    </section>
   </div>;
 };
 

@@ -41,7 +41,10 @@ function App() {
   };
 
   const handleAddItemSubmit = (item) => {
-    setClothingItems([item, ...clothingItems]);
+    // call postItems
+    postItems(item).then((res) => {
+      setClothingItems([res, ...clothingItems]);
+    });
   };
 
   const handleRemovingItem = () => {};
@@ -54,8 +57,12 @@ function App() {
     getForecastWeather()
       .then((data) => {
         const tempature = parseWeatherData(data);
+        const date = new Date();
         setWeatherType(data.weather[0].main.toLowerCase());
-        if (data?.sys.sunset < data?.sys.sunrise) {
+        if (
+          data?.sys.sunrise * 1000 < date.getTime() &&
+          data?.sys.sunset * 1000 > date.getTime()
+        ) {
           isDay(true);
         } else {
           isDay(false);
@@ -63,13 +70,6 @@ function App() {
         setTemp(tempature);
         getItems().then((res) => {
           setClothingItems(res);
-        });
-        postItems({
-          name: clothingItems.name,
-          imageUrl: clothingItems.imageUrl,
-          weather: clothingItems.weather,
-        }).then((res) => {
-          setClothingItems([res, ...clothingItems]);
         });
       })
       .catch((err) => {
@@ -103,6 +103,7 @@ function App() {
             handleCloseModal={handleCloseModal}
             isOpen={activeModal === "create"}
             onAddItem={onAddItem}
+            handleAddItemSubmit={handleAddItemSubmit}
           />
         )}
 
