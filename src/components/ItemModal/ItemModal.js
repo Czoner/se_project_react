@@ -1,4 +1,4 @@
-const ItemModal = ({ selectedCard, onClose }) => {
+const ItemModal = ({ selectedCard, onClose, deleteCard }) => {
   return (
     <div className={"modal"}>
       <div className="modal__preview">
@@ -9,11 +9,19 @@ const ItemModal = ({ selectedCard, onClose }) => {
         ></button>
         <img src={selectedCard.imageUrl} className="modal__image" />
         <div className="modal__card_info">
-          <p className="modal__card_name">{selectedCard.name}</p>
-          <p className="modal__card_weather">
-            Weather Type: {selectedCard.weather}
-          </p>
-          <p className="modal__card_delete">Delete item</p>
+          <div>
+            <p className="modal__card_name">{selectedCard.name}</p>
+            <p className="modal__card_weather">
+              Weather Type: {selectedCard.weather}
+            </p>
+          </div>
+          <button
+            onDelete={deleteCard}
+            type="button"
+            className="modal__card_delete"
+          >
+            Delete item
+          </button>
         </div>
       </div>
     </div>

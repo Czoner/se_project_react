@@ -5,8 +5,6 @@
   line-height: 25px;
   letter-spacing: 0em;
   text-align: left;
-  margin-top: 19px;
-  margin-bottom: 16px;
 }
 
 .add-Card {
@@ -21,6 +19,7 @@
   text-align: left;
   opacity: 0.6;
   cursor: pointer;
+  padding: 0;
 }
 
 .card-items {
@@ -29,5 +28,9 @@
   gap: 20px;
 }
 
-.itemSection {
+.function-section {
+  display: flex;
+  gap: 20px;
+  margin-top: 19px;
+  margin-bottom: 16px;
 }

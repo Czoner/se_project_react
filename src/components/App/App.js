@@ -9,7 +9,7 @@ import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
 import CurrentTempatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { Switch, Route } from "react-router-dom";
 import AddItemModal from "../../AddItemModal/AddItemModal";
-import { getItems, postItems } from "../../utils/api";
+import { deleteItems, getItems, postItems } from "../../utils/api";
 import Profile from "../../Profile/Profile";
 
 function App() {
@@ -37,7 +37,13 @@ function App() {
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
-    console.log(card);
+  };
+
+  const handleDeleteCard = () => {
+    setActiveModal("");
+    deleteItems().then((res) => {
+      setSelectedCard(res.filter((item) => item.id !== item));
+    });
   };
 
   const onAddItem = (values) => {
@@ -105,7 +111,11 @@ function App() {
         )}
 
         {activeModal === "preview" && (
-          <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+          <ItemModal
+            selectedCard={selectedCard}
+            onClose={handleCloseModal}
+            deleteCard={handleDeleteCard}
+          />
         )}
       </CurrentTempatureUnitContext.Provider>
     </div>

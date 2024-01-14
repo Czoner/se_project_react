@@ -128,6 +128,21 @@
       "id": "1f57",
       "name": "Cristofer Ledesma",
       "weather": "warm"
+    },
+    {
+      "id": "dab1",
+      "name": "Cristofer Ledesma",
+      "weather": "cold"
+    },
+    {
+      "id": "4d5f",
+      "name": "Cristofer Ledesma",
+      "weather": "hot"
+    },
+    {
+      "id": "f6b2",
+      "name": "Cristofer Ledesma",
+      "weather": "warm"
     }
   ]
 }
