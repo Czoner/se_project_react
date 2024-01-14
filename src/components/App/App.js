@@ -3,7 +3,6 @@ import "./App.css";
 import "../Footer/Footer.css";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import ModalForm from "../ModalForm/ModalForm";
 import { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
 import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
@@ -38,19 +37,14 @@ function App() {
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
+    console.log(card);
   };
-
-  const handleAddItemSubmit = (item) => {
-    // call postItems
-    postItems(item).then((res) => {
-      setClothingItems([res, ...clothingItems]);
-    });
-  };
-
-  const handleRemovingItem = () => {};
 
   const onAddItem = (values) => {
     console.log(values);
+    postItems(values).then((res) => {
+      setClothingItems([res, ...clothingItems]);
+    });
   };
 
   useEffect(() => {
@@ -94,7 +88,11 @@ function App() {
             />
           </Route>
           <Route path="/profile">
-            <Profile />
+            <Profile
+              onSelectCard={handleSelectedCard}
+              clothingItems={clothingItems}
+              onCreateModal={handleCreateModal}
+            />
           </Route>
         </Switch>
         <Footer />
@@ -103,7 +101,6 @@ function App() {
             handleCloseModal={handleCloseModal}
             isOpen={activeModal === "create"}
             onAddItem={onAddItem}
-            handleAddItemSubmit={handleAddItemSubmit}
           />
         )}
 

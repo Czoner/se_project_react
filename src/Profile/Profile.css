@@ -1,0 +1,10 @@
+.profile {
+  padding-left: 40px;
+  margin-top: 40px;
+  display: flex;
+  align-items: flex-start;
+  gap: 116px;
+}
+
+.profile-sidebar {
+}

@@ -1,0 +1,33 @@
+.text {
+  font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-top: 19px;
+  margin-bottom: 16px;
+}
+
+.add-Card {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.card-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.itemSection {
+}

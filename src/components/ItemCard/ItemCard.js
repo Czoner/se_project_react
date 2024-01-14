@@ -1,6 +1,7 @@
 const ItemCard = ({ item, onSelectCard }) => {
   const onClick = () => {
     onSelectCard(item);
+    console.log(item);
   };
   return (
     <div>

@@ -84,11 +84,26 @@
   text-align: left;
 }
 
+.modal__card_delete {
+  position: absolute;
+  left: 365px;
+  bottom: 68px;
+  font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #ff4d00;
+  margin: none;
+}
+
 .modal__card_info {
   background-color: white;
   padding-left: 32px;
   padding-bottom: 32px;
   margin: 0;
+  position: relative;
 }
 
 .button__close {

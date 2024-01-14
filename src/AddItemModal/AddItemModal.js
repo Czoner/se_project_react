@@ -17,6 +17,12 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
     setUrl(e.target.value);
   };
 
+  const [weather, setWeather] = useState("");
+  const handleWeatherChange = (e) => {
+    console.log(e.target.value);
+    setWeather(e.target.value);
+  };
+
   // use a useEffect hook to reset the input field state to empty strings when
   // the modal is opened
 
@@ -24,7 +30,7 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    onAddItem({ name, link });
+    onAddItem({ name, link, weather });
   }
 
   return (
@@ -64,6 +70,7 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
             value="hot"
             name="weather"
             className="radio__dot"
+            onChange={handleWeatherChange}
           />
           <label className="weather__name" htmlFor="hot">
             Hot
@@ -76,6 +83,7 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
             value="warm"
             name="weather"
             className="radio__dot"
+            onChange={handleWeatherChange}
           />
           <label className="weather__name" htmlFor="warm">
             Warm
@@ -88,6 +96,7 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
             value="cold"
             name="weather"
             className="radio__dot"
+            onChange={handleWeatherChange}
           />
           <label className="weather__name" htmlFor="cold">
             Cold
