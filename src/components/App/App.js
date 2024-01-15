@@ -40,8 +40,11 @@ function App() {
   };
 
   const handleDeleteCard = (card) => {
-    deleteItems(card.id).then((res) => {
-      return console.log(res);
+    deleteItems(card.id).then(() => {
+      const itemList = clothingItems.filter((item) => {
+        return item.id !== card.id;
+      });
+      setClothingItems(itemList);
     });
   };
 
