@@ -1,4 +1,3 @@
-import { defaultClothingItems } from "../../utils/constants";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import { useContext } from "react";
@@ -31,7 +30,7 @@ function Main({ weatherTemp, weatherType, onSelectCard, day, clothingItems }) {
         Today is {temp} F / You may want to wear:
         <div className="card_items">
           {filteredCards.map((x) => (
-            <ItemCard item={x} onSelectCard={onSelectCard} key={x.id} />
+            <ItemCard item={x} onSelectCard={onSelectCard} key={x._id} />
           ))}
         </div>
       </section>

@@ -49,6 +49,7 @@ function App() {
   };
 
   const onAddItem = (values) => {
+    console.log(values);
     postItems(values).then((res) => {
       setClothingItems([res, ...clothingItems]);
     });
