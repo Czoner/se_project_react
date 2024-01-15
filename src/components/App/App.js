@@ -39,15 +39,14 @@ function App() {
     setSelectedCard(card);
   };
 
-  const handleDeleteCard = () => {
+  const handleDeleteCard = (card) => {
     setActiveModal("");
-    deleteItems().then((res) => {
+    deleteItems(card._id).then((res) => {
       setSelectedCard(res.filter((item) => item.id !== item));
     });
   };
 
   const onAddItem = (values) => {
-    console.log(values);
     postItems(values).then((res) => {
       setClothingItems([res, ...clothingItems]);
     });

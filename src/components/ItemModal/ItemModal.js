@@ -16,7 +16,7 @@ const ItemModal = ({ selectedCard, onClose, deleteCard }) => {
             </p>
           </div>
           <button
-            onDelete={deleteCard}
+            onClick={deleteCard}
             type="button"
             className="modal__card_delete"
           >

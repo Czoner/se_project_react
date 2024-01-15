@@ -21,7 +21,7 @@ export const postItems = ({ name, imageUrl, weather }) =>
     }),
   }).then(processServerResponse);
 
-export const deleteItems = () =>
-  fetch(`${baseUrl}/items/:id`, {
+export const deleteItems = (cardid) =>
+  fetch(`${baseUrl}/items/${cardid}`, {
     method: "DELETE",
   }).then(processServerResponse);
