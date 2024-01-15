@@ -1,4 +1,4 @@
-const ItemModal = ({ selectedCard, onClose, deleteCard }) => {
+const ItemModal = ({ selectedCard, onClose, handleDeleteCard }) => {
   return (
     <div className={"modal"}>
       <div className="modal__preview">
@@ -16,7 +16,8 @@ const ItemModal = ({ selectedCard, onClose, deleteCard }) => {
             </p>
           </div>
           <button
-            onClick={deleteCard}
+            onClick={handleDeleteCard}
+            onClick={onClose}
             type="button"
             className="modal__card_delete"
           >

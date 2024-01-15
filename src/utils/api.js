@@ -24,4 +24,5 @@ export const postItems = ({ name, imageUrl, weather }) =>
 export const deleteItems = (cardid) =>
   fetch(`${baseUrl}/items/${cardid}`, {
     method: "DELETE",
+    headers: { "Content-type": "application/json" },
   }).then(processServerResponse);

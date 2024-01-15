@@ -40,9 +40,8 @@ function App() {
   };
 
   const handleDeleteCard = (card) => {
-    setActiveModal("");
-    deleteItems(card._id).then((res) => {
-      setSelectedCard(res.filter((item) => item.id !== item));
+    deleteItems(card.id).then((res) => {
+      return console.log(res);
     });
   };
 
@@ -113,7 +112,9 @@ function App() {
           <ItemModal
             selectedCard={selectedCard}
             onClose={handleCloseModal}
-            deleteCard={handleDeleteCard}
+            handleDeleteCard={() => {
+              handleDeleteCard(selectedCard);
+            }}
           />
         )}
       </CurrentTempatureUnitContext.Provider>

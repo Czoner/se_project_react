@@ -36,13 +36,6 @@
       "id": "8df0"
     },
     {
-      "_id": 5,
-      "name": "Hoodie",
-      "weather": "cold",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Hoodie.png?etag=5f52451d0958ccb1016c78a45603a4e8",
-      "id": "e320"
-    },
-    {
       "_id": 6,
       "name": "Jacket",
       "weather": "cold",
@@ -55,13 +48,6 @@
       "weather": "warm",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Jeans.png?etag=58345e8bef1ce5f95ac882e71d309e6c",
       "id": "dae8"
-    },
-    {
-      "_id": 8,
-      "name": "Loafers",
-      "weather": "warm",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Loafers.png?etag=dc2d6e1ca7b297597406e35c40aef030",
-      "id": "f553"
     },
     {
       "_id": 9,
@@ -125,22 +111,7 @@
       "weather": "warm"
     },
     {
-      "id": "1f57",
-      "name": "Cristofer Ledesma",
-      "weather": "warm"
-    },
-    {
-      "id": "dab1",
-      "name": "Cristofer Ledesma",
-      "weather": "cold"
-    },
-    {
-      "id": "4d5f",
-      "name": "Cristofer Ledesma",
-      "weather": "hot"
-    },
-    {
-      "id": "f6b2",
+      "id": "be14",
       "name": "Cristofer Ledesma",
       "weather": "warm"
     }
