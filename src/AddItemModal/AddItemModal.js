@@ -7,19 +7,16 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
   // declare state for each input field
   const [name, setName] = useState("");
   const handleNameChange = (e) => {
-    console.log(e.target.value);
     setName(e.target.value);
   };
 
   const [imageUrl, setUrl] = useState("");
   const handleUrlChange = (e) => {
-    console.log(e.target.value);
     setUrl(e.target.value);
   };
 
   const [weather, setWeather] = useState("");
   const handleWeatherChange = (e) => {
-    console.log(e.target.value);
     setWeather(e.target.value);
   };
 

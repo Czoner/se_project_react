@@ -46,13 +46,14 @@ function App() {
       });
       setClothingItems(itemList);
     });
+    handleCloseModal();
   };
 
   const onAddItem = (values) => {
-    console.log(values);
     postItems(values).then((res) => {
       setClothingItems([res, ...clothingItems]);
     });
+    handleCloseModal();
   };
 
   useEffect(() => {

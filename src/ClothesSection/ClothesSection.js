@@ -13,7 +13,13 @@ const ClothesSection = ({ clothingItems, onSelectCard, onCreateModal }) => {
 
       <div className="card-items">
         {clothingItems.map((x) => {
-          return <ItemCard item={x} onSelectCard={onSelectCard} key={x._id} />;
+          return (
+            <ItemCard
+              item={x}
+              onSelectCard={onSelectCard}
+              key={x?._id || x?.id}
+            />
+          );
         })}
       </div>
     </div>
