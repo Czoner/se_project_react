@@ -54,6 +54,11 @@
   margin-bottom: 24px;
 }
 
+.modal__image {
+  max-width: 498px;
+  max-height: 610px;
+}
+
 .modal__preview {
   position: relative;
   display: flex;

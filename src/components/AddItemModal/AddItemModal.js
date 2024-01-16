@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import ModalForm from "../components/ModalForm/ModalForm";
+import ModalForm from "../ModalForm/ModalForm";
 
 // onAddItem refers to handleAddItemSubmit, which is declared in App.js
 const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
@@ -19,11 +19,6 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
   const handleWeatherChange = (e) => {
     setWeather(e.target.value);
   };
-
-  // use a useEffect hook to reset the input field state to empty strings when
-  // the modal is opened
-
-  // create onChange handlers corresponding to each state variable
 
   function handleSubmit(e) {
     e.preventDefault();
