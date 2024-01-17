@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import ModalForm from "../ModalForm/ModalForm";
+import ModalWithForm from "../ModalForm/ModalForm";
 
 // onAddItem refers to handleAddItemSubmit, which is declared in App.js
 const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
@@ -26,7 +26,7 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
   }
 
   return (
-    <ModalForm
+    <ModalWithForm
       title="New gardment"
       buttontext="Add garment"
       onClose={handleCloseModal}
@@ -38,6 +38,7 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
         <input
           type="text"
           name="name"
+          value={name}
           className="modal__input"
           placeholder="Name"
           onChange={handleNameChange}
@@ -48,6 +49,7 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
         <input
           type="url"
           name="link"
+          value={imageUrl}
           className="modal__input"
           placeholder="Image URL"
           onChange={handleUrlChange}
@@ -95,7 +97,7 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
           </label>
         </li>
       </ul>
-    </ModalForm>
+    </ModalWithForm>
   );
 };
 

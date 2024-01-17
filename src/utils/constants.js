@@ -1,16 +1,3 @@
-// import dayRain from "../images/Day/rain.svg";
-// import dayStorm from "../images/Day/storm.svg";
-// import daySnow from "../images/Day/snow.svg";
-// import dayFog from "../images/Day/fog.svg";
-// import dayClouds from "../images/Day/cloudy.svg";
-// import daySunny from "../images/Day/sunny.svg";
-// import nightMoon from "../images/Night/moon.svg";
-// import nightClouds from "../images/Night/nightCloud.svg";
-// import nightRain from "../images/Night/nightRain.svg";
-// import nightStorm from "../images/Night/nightStorm.svg";
-// import nightSnow from "../images/Night/nightSnow.svg";
-// import nightFog from "../images/Night/nightFog.svg";
-
 export const defaultClothingItems = [
   {
     _id: 0,
@@ -50,61 +37,63 @@ export const defaultClothingItems = [
   },
 ];
 
-// export const weatherOptions = [
-//   {
-//     url: require("../images/Day/rain.svg").default,
-//     day: true,
-//     type: "rain",
-//   },
-//   {
-//     url: dayStorm,
-//     day: true,
-//     type: "storm",
-//   },
-//   {
-//     url: daySnow,
-//     day: true,
-//     type: "snow",
-//   },
-//   { url: dayFog, day: true, type: "fog" },
-//   {
-//     url: dayClouds,
-//     day: true,
-//     type: "clouds",
-//   },
-//   {
-//     url: daySunny,
-//     day: true,
-//     type: "sunny",
-//   },
-//   {
-//     url: nightMoon,
-//     day: false,
-//     type: "moon",
-//   },
-//   {
-//     url: nightClouds,
-//     day: false,
-//     type: "clouds",
-//   },
-//   {
-//     url: require("../images/Night/nightRain.svg").default,
-//     day: false,
-//     type: "rain",
-//   },
-//   {
-//     url: nightStorm,
-//     day: false,
-//     type: "storm",
-//   },
-//   {
-//     url: nightSnow,
-//     day: false,
-//     type: "snow",
-//   },
-//   {
-//     url: nightFog,
-//     day: false,
-//     type: "fog",
-//   },
-// ];
+const weatherOptions = [
+  {
+    url: require("../images/Day/rain.svg").default,
+    day: true,
+    type: "rain",
+  },
+  {
+    url: require("../images/Day/storm.svg").default,
+    day: true,
+    type: "storm",
+  },
+  {
+    url: require("../images/Day/snow.svg").default,
+    day: true,
+    type: "snow",
+  },
+  { url: require("../images/Day/fog.svg").default, day: true, type: "fog" },
+  {
+    url: require("../images/Day/cloudy.svg").default,
+    day: true,
+    type: "clouds",
+  },
+  {
+    url: require("../images/Day/sunny.svg").default,
+    day: true,
+    type: "sunny",
+  },
+  {
+    url: require("../images/Night/moon.svg").default,
+    day: false,
+    type: "moon",
+  },
+  {
+    url: require("../images/Night/nightCloud.svg").default,
+    day: false,
+    type: "clouds",
+  },
+  {
+    url: require("../images/Night/nightRain.svg").default,
+    day: false,
+    type: "rain",
+  },
+  {
+    url: require("../images/Night/nightStorm.svg").default,
+    day: false,
+    type: "storm",
+  },
+  {
+    url: require("../images/Night/nightSnow.svg").default,
+    day: false,
+    type: "snow",
+  },
+  {
+    url: require("../images/Night/nightFog.svg").default,
+    day: false,
+    type: "fog",
+  },
+];
+
+export default weatherOptions;

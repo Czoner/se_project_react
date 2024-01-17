@@ -1,11 +1,6 @@
-const baseUrl = "http://localhost:3001";
+import processServerResponse from "../utils/weatherApi.js";
 
-const processServerResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(`Error: ${res.status}`);
-};
+const baseUrl = "http://localhost:3001";
 
 export const getItems = () =>
   fetch(`${baseUrl}/items`).then(processServerResponse);
