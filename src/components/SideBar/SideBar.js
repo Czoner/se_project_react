@@ -1,4 +1,4 @@
-import avitar from "../images/Ellipse 18.svg";
+import avitar from "../../images/Ellipse 18.svg";
 import "./SideBar.css";
 
 const SideBar = () => {
