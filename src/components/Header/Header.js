@@ -1,7 +1,7 @@
 import "./Header.css";
 import logoImg from "../../images/Logo.svg";
 import avitar from "../../images/Ellipse 18.svg";
-import ToggleSwitch from "../../ToggleSwitch/ToggleSwitch";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.js";
 import { Link } from "react-router-dom";
 
 const Header = ({ onCreateModal }) => {
