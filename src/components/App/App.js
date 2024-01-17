@@ -40,9 +40,10 @@ function App() {
   };
 
   const handleDeleteCard = (card) => {
-    deleteItems(card.id).then(() => {
+    console.log(card);
+    deleteItems(card._id).then(() => {
       const itemList = clothingItems.filter((item) => {
-        return item.id !== card.id;
+        return item._id !== card._id;
       });
       setClothingItems(itemList);
     });
