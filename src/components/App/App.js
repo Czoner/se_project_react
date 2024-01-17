@@ -20,6 +20,7 @@ function App() {
   const [days, isDay] = useState(true);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -55,8 +56,10 @@ function App() {
   };
 
   const onAddItem = (values) => {
+    setIsLoading(true);
     postItems(values)
       .then((res) => {
+        setIsLoading(false);
         setClothingItems([res, ...clothingItems]);
         handleCloseModal();
       })
@@ -118,6 +121,7 @@ function App() {
           handleCloseModal={handleCloseModal}
           isOpen={activeModal === "create"}
           onAddItem={onAddItem}
+          isLoading={isLoading}
         />
       )}
 

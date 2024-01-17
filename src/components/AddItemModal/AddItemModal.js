@@ -3,7 +3,7 @@ import { useState } from "react";
 import ModalWithForm from "../ModalForm/ModalForm";
 
 // onAddItem refers to handleAddItemSubmit, which is declared in App.js
-const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
+const AddItemModal = ({ isOpen, onAddItem, handleCloseModal, isLoading }) => {
   // declare state for each input field
   const [name, setName] = useState("");
   const handleNameChange = (e) => {
@@ -28,7 +28,7 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
   return (
     <ModalWithForm
       title="New gardment"
-      buttontext="Add garment"
+      buttontext={isLoading ? "Saving..." : "Add garment"}
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
