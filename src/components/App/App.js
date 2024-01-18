@@ -59,7 +59,6 @@ function App() {
     setIsLoading(true);
     postItems(values)
       .then((res) => {
-        console.log(res);
         setIsLoading(false);
         setClothingItems([res, ...clothingItems]);
         handleCloseModal();
