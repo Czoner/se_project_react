@@ -143,6 +143,12 @@
       "imageUrl": "",
       "weather": "",
       "_id": 26
+    },
+    {
+      "name": "Cristofer",
+      "imageUrl": "https://images.freeimages.com/variants/k1wQB7egQotJ7Hr3ZBPP1S5c/f4a36f6589a0e50e702740b15352bc00e4bfaf6f58bd4db850e167794d05993d?fmt=webp&h=350",
+      "weather": "cold",
+      "_id": 27
     }
   ]
 }

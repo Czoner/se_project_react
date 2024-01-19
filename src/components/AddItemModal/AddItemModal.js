@@ -29,6 +29,7 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal, isLoading }) => {
   function handleSubmit(e) {
     e.preventDefault();
     onAddItem(values);
+    console.log(values);
   }
 
   return (
@@ -54,7 +55,7 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal, isLoading }) => {
         Image
         <input
           type="url"
-          name="link"
+          name="imageUrl"
           value={values.imageUrl}
           className="modal__input"
           placeholder="Image URL"
