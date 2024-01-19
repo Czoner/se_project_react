@@ -1,4 +1,3 @@
-import { type } from "@testing-library/user-event/dist/type";
 import weatherOptions from "../../utils/constants.js";
 
 const WeatherCard = ({ day, weatherType, weatherTemp = "" }) => {
@@ -6,11 +5,12 @@ const WeatherCard = ({ day, weatherType, weatherTemp = "" }) => {
     return option.day === day && option.type.toLowerCase() === weatherType;
   });
   const imageSrcUrl = weatherOption?.url || "";
+
   return (
     <section className="weather" id="weather">
       <div className="weather_info">{weatherTemp} F</div>
       <div>
-        <img src={imageSrcUrl} className="weather_image" />
+        <img src={imageSrcUrl} className="weather_image" alt="weather option" />
       </div>
     </section>
   );

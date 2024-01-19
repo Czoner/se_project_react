@@ -41,7 +41,6 @@ function App() {
   };
 
   const handleDeleteCard = (card) => {
-    console.log(card);
     deleteItems(card._id)
       .then(() => {
         const itemList = clothingItems.filter((item) => {
@@ -59,12 +58,14 @@ function App() {
     setIsLoading(true);
     postItems(values)
       .then((res) => {
-        setIsLoading(false);
         setClothingItems([res, ...clothingItems]);
         handleCloseModal();
       })
       .catch((err) => {
         console.error(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 

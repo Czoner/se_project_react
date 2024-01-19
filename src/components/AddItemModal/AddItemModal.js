@@ -1,25 +1,10 @@
 import React from "react";
 // import { useState } from "react";
-import ModalWithForm from "../ModalForm/ModalForm";
+import ModalWithForm from "../ModalWithForm/ModalWithForm.js";
 import { useForm } from "../Hooks/useForm";
 
 // onAddItem refers to handleAddItemSubmit, which is declared in App.js
 const AddItemModal = ({ isOpen, onAddItem, handleCloseModal, isLoading }) => {
-  // const [name, setName] = useState("");
-  // const handleNameChange = (e) => {
-  //   setName(e.target.value);
-  // };
-
-  // const [imageUrl, setUrl] = useState("");
-  // const handleUrlChange = (e) => {
-  //   setUrl(e.target.value);
-  // };
-
-  // const [weather, setWeather] = useState("");
-  // const handleWeatherChange = (e) => {
-  //   setWeather(e.target.value);
-  // };
-
   const { values, handleChange, setValues } = useForm({
     name: "",
     imageUrl: "",
@@ -29,7 +14,6 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal, isLoading }) => {
   function handleSubmit(e) {
     e.preventDefault();
     onAddItem(values);
-    console.log(values);
   }
 
   return (

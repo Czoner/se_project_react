@@ -1,4 +1,4 @@
-import "./ModalForm.css";
+import "./ModalWithForm.css";
 import React from "react";
 
 const ModalWithForm = ({
