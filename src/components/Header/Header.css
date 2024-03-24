@@ -33,16 +33,30 @@
   margin-left: 20px;
 }
 
-.header__name {
+.header__signUp {
   font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
   font-size: 20px;
   font-weight: 700;
   line-height: 25px;
   letter-spacing: 0em;
   text-align: left;
-  width: 157px;
+  width: 67px;
   height: 25px;
-  margin: 0 12px 0 20px;
+  margin: 0 0 0 20px;
+  color: black;
+  text-decoration: none;
+}
+
+.header__signIn {
+  font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+  width: 67px;
+  height: 25px;
+  margin-left: 20px;
   color: black;
   text-decoration: none;
 }

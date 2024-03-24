@@ -15,7 +15,7 @@ const Header = ({ onCreateModal }) => {
       </div>
       <div className="header__avatar-logo">
         <ToggleSwitch />
-        <div>
+        {/* <div>
           <button
             type="text"
             onClick={onCreateModal}
@@ -23,13 +23,13 @@ const Header = ({ onCreateModal }) => {
           >
             + Add clothes
           </button>
-        </div>
-        <Link className="header__name" to="/profile">
-          Terrence Tegegne
+        </div> */}
+        <Link className="header__signUp" to="/profile">
+          Sign Up
         </Link>
-        <div>
-          <img src={avitar} alt="Logo" />
-        </div>
+        <Link className="header__signIn" to="/profile">
+          Sign In
+        </Link>
       </div>
     </header>
   );
