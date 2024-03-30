@@ -9,6 +9,7 @@ import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
 import CurrentTempatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { Switch, Route, Redirect } from "react-router-dom";
 import AddItemModal from "../AddItemModal/AddItemModal.js";
+import RegisterModal from "../ModalWithForm/RegisterModal.js";
 import { deleteItems, getItems, postItems } from "../../utils/api";
 import Profile from "../Profile/Profile.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
@@ -26,6 +27,10 @@ function App() {
 
   const handleCreateModal = () => {
     setActiveModal("create");
+  };
+
+  const handleSignUpModal = () => {
+    setActiveModal("signUp");
   };
 
   const handleCloseModal = () => {
@@ -99,7 +104,10 @@ function App() {
     <CurrentTempatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
-      <Header onCreateModal={handleCreateModal} />
+      <Header
+        onCreateModal={handleCreateModal}
+        onSignUpModal={handleSignUpModal}
+      />
       <Switch>
         <Route exact path="/">
           <Main
@@ -127,7 +135,12 @@ function App() {
           isLoading={isLoading}
         />
       )}
-
+      {activeModal === "signUp" && (
+        <RegisterModal
+          handleCloseModal={handleCloseModal}
+          isOpen={activeModal === "signUp"}
+        />
+      )}
       {activeModal === "preview" && (
         <ItemModal
           selectedCard={selectedCard}

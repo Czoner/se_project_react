@@ -4,7 +4,7 @@ import avitar from "../../images/Ellipse 18.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.js";
 import { Link } from "react-router-dom";
 
-const Header = ({ onCreateModal }) => {
+const Header = ({ onCreateModal, onSignUpModal }) => {
   return (
     <header className="header">
       <div className="header__logo">
@@ -24,12 +24,10 @@ const Header = ({ onCreateModal }) => {
             + Add clothes
           </button>
         </div> */}
-        <Link className="header__signUp" to="/profile">
+        <button type="text" onClick={onSignUpModal} className="header__signUp">
           Sign Up
-        </Link>
-        <Link className="header__signIn" to="/profile">
-          Sign In
-        </Link>
+        </button>
+        <button className="header__signIn">Log In</button>
       </div>
     </header>
   );

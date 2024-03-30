@@ -40,11 +40,13 @@
   line-height: 25px;
   letter-spacing: 0em;
   text-align: left;
-  width: 67px;
+  border: none;
   height: 25px;
   margin: 0 0 0 20px;
+  padding: 0;
   color: black;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .header__signIn {
@@ -54,11 +56,14 @@
   line-height: 25px;
   letter-spacing: 0em;
   text-align: left;
-  width: 67px;
+  border: none;
+  width: 52px;
   height: 25px;
   margin-left: 20px;
+  padding: 0;
   color: black;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .header__date {
