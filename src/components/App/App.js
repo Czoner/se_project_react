@@ -13,6 +13,7 @@ import RegisterModal from "../ModalWithForm/RegisterModal.js";
 import { deleteItems, getItems, postItems } from "../../utils/api";
 import Profile from "../Profile/Profile.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
+import * as auth from "../Auth/auth.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -33,7 +34,8 @@ function App() {
     setActiveModal("signUp");
   };
 
-  const handleCloseModal = () => {
+  const handleCloseModal = (e) => {
+    e.preventDefault();
     setActiveModal("");
   };
 
@@ -59,6 +61,10 @@ function App() {
       .catch((err) => {
         console.error(err);
       });
+  };
+
+  const handleSignUp = ({ name, avatar, email, password }) => {
+    auth.signUp(email, name, avatar, password).then(() => {});
   };
 
   const onAddItem = (values) => {
@@ -138,6 +144,7 @@ function App() {
       {activeModal === "signUp" && (
         <RegisterModal
           handleCloseModal={handleCloseModal}
+          handleSignUp={handleSignUp}
           isOpen={activeModal === "signUp"}
         />
       )}
