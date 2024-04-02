@@ -8,11 +8,11 @@ import ItemModal from "../ItemModal/ItemModal";
 import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
 import CurrentTempatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { Switch, Route, Redirect } from "react-router-dom";
-import AddItemModal from "../AddItemModal/AddItemModal.js";
-import RegisterModal from "../ModalWithForm/RegisterModal.js";
+import AddItemModal from "../AddItemModal/AddItemModal.jsx";
+import RegisterModal from "../ModalWithForm/RegisterModal.jsx";
 import { deleteItems, getItems, postItems } from "../../utils/api";
-import Profile from "../Profile/Profile.js";
-import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
+import Profile from "../Profile/Profile.jsx";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import * as auth from "../Auth/auth.js";
 
 function App() {

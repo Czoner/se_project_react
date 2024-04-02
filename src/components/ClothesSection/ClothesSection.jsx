@@ -1,4 +1,4 @@
-import ItemCard from "../ItemCard/ItemCard.js";
+import ItemCard from "../ItemCard/ItemCard.jsx";
 import "./ClothesSection.css";
 
 const ClothesSection = ({ clothingItems, onSelectCard, onCreateModal }) => {
