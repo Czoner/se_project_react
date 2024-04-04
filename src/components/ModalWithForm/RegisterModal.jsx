@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import * as auth from "../Auth/auth";
 import ModalWithForm from "./ModalWithForm";
 
 const RegisterModal = ({
@@ -15,22 +13,9 @@ const RegisterModal = ({
     email: "",
     password: "",
   });
-
-  const history = useHistory();
-
   const handleSubmit = (e) => {
     e.preventDefault();
     handleSignUp(values);
-    auth
-      .signUp(values)
-      .then((res) => {
-        if (res) {
-          history.push("/profile");
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
   };
 
   const handleChange = (event) => {

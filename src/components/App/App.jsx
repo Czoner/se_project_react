@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
 import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
 import CurrentTempatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import RegisterModal from "../ModalWithForm/RegisterModal.jsx";
 import { deleteItems, getItems, postItems } from "../../utils/api";
@@ -25,6 +25,8 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+
+  const navigate = useNavigate();
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -64,7 +66,12 @@ function App() {
   };
 
   const handleSignUp = ({ name, avatar, email, password }) => {
-    auth.signUp(email, name, avatar, password).then(() => {});
+    auth
+      .signUp(name, avatar, email, password)
+      .then(() => {
+        navigate("/profile");
+      })
+      .catch(console.error);
   };
 
   const onAddItem = (values) => {
@@ -114,7 +121,7 @@ function App() {
         onCreateModal={handleCreateModal}
         onSignUpModal={handleSignUpModal}
       />
-      <Switch>
+      <Routes>
         <Route exact path="/">
           <Main
             weatherTemp={temp}
@@ -131,7 +138,7 @@ function App() {
             onCreateModal={handleCreateModal}
           />
         </ProtectedRoute>
-      </Switch>
+      </Routes>
       <Footer />
       {activeModal === "create" && (
         <AddItemModal
