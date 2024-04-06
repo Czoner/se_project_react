@@ -2,7 +2,8 @@ import processServerResponse from "../../utils/weatherApi";
 import { baseUrl } from "../../utils/api";
 
 export const signUp = ({ name, avatar, email, password }) => {
-  fetch(`${baseUrl}/signup`, {
+  console.log(JSON.stringify({ name, avatar, email, password }));
+  return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -10,14 +11,8 @@ export const signUp = ({ name, avatar, email, password }) => {
     },
     body: JSON.stringify({ name, avatar, email, password }),
   })
-    .then((response) => {
-      try {
-        if (response.status === 200) {
-          return response.json();
-        }
-      } catch (e) {
-        return e;
-      }
+    .then((res) => {
+      return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
     })
     .then(processServerResponse);
 };
@@ -30,14 +25,8 @@ export const signIn = ({ email, password }) => {
     },
     body: JSON.stringify({ email, password }),
   })
-    .then((response) => {
-      try {
-        if (response.status === 200) {
-          return response.json();
-        }
-      } catch (e) {
-        return e;
-      }
+    .then((res) => {
+      localStorage.setItem("jwt", res.token);
     })
     .then(processServerResponse);
 };

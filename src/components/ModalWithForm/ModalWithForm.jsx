@@ -4,6 +4,7 @@ import React from "react";
 const ModalWithForm = ({
   children,
   buttontext,
+  buttontext2,
   title,
   onClose,
   name,
@@ -19,13 +20,12 @@ const ModalWithForm = ({
           {children}
           <div className="modal__button">
             <button
-              onClick={onClose}
               type="submit"
               className="weather__button weather__button_disabled"
             >
               {buttontext}
             </button>
-            <button className="modal__login_button">or Log in</button>
+            <button className="modal__login_button">{buttontext2}</button>
           </div>
         </form>
       </div>

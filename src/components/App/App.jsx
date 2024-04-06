@@ -14,6 +14,7 @@ import { deleteItems, getItems, postItems } from "../../utils/api";
 import Profile from "../Profile/Profile.jsx";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import * as auth from "../Auth/auth.js";
+import SignInModal from "../ModalWithForm/SignInModal.jsx";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -25,6 +26,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [userData, setUserData] = useState({ email: "", password: "" });
 
   const navigate = useNavigate();
 
@@ -34,6 +36,10 @@ function App() {
 
   const handleSignUpModal = () => {
     setActiveModal("signUp");
+  };
+
+  const handleSingInModal = () => {
+    setActiveModal("signIn");
   };
 
   const handleCloseModal = (e) => {
@@ -65,11 +71,30 @@ function App() {
       });
   };
 
+  //Singing in and out from the modals
   const handleSignUp = ({ name, avatar, email, password }) => {
     auth
       .signUp(name, avatar, email, password)
       .then(() => {
         navigate("/profile");
+      })
+      .catch(console.error);
+  };
+
+  const handleSignIn = ({ email, password }) => {
+    if (!username || !password) {
+      return;
+    }
+
+    auth
+      .signIn(email, password)
+      .then((data) => {
+        console.log(data);
+        if (data.jwt) {
+          setUserData(data.user);
+          setIsLoggedIn(true);
+          navigate("/profile");
+        }
       })
       .catch(console.error);
   };
@@ -120,6 +145,7 @@ function App() {
       <Header
         onCreateModal={handleCreateModal}
         onSignUpModal={handleSignUpModal}
+        onSignInModal={handleSingInModal}
       />
       <Routes>
         <Route
@@ -162,6 +188,13 @@ function App() {
           handleCloseModal={handleCloseModal}
           handleSignUp={handleSignUp}
           isOpen={activeModal === "signUp"}
+        />
+      )}
+      {activeModal === "signIn" && (
+        <SignInModal
+          handleCloseModal={handleCloseModal}
+          handleSignIn={handleSignIn}
+          isOpen={activeModal === "signIn"}
         />
       )}
       {activeModal === "preview" && (

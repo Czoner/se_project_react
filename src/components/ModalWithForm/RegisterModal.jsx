@@ -16,17 +16,19 @@ const RegisterModal = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     handleSignUp(values);
+    console.log("it worked");
   };
 
   const handleChange = (event) => {
-    const { value, name } = event.target;
-    setValues(({ ...values }[name] = value));
+    const { name, value } = event.target;
+    setValues((prevValues) => ({ ...prevValues, [name]: value }));
   };
 
   return (
     <ModalWithForm
       title="Sign Up"
       buttontext={isLoading ? "Saving..." : "Sign Up"}
+      buttontext2="or Log in"
       isOpen={isOpen}
       onClose={handleCloseModal}
       onSubmit={handleSubmit}
