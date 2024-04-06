@@ -122,22 +122,31 @@ function App() {
         onSignUpModal={handleSignUpModal}
       />
       <Routes>
-        <Route exact path="/">
-          <Main
-            weatherTemp={temp}
-            weatherType={weatherType}
-            onSelectCard={handleSelectedCard}
-            day={days}
-            clothingItems={clothingItems}
+        <Route
+          exact
+          path="/"
+          element={
+            <Main
+              weatherTemp={temp}
+              weatherType={weatherType}
+              onSelectCard={handleSelectedCard}
+              day={days}
+              clothingItems={clothingItems}
+            />
+          }
+        />
+        <Route element={<ProtectedRoute isLoggedIn={isLoggedIn} />}>
+          <Route
+            path="/profile"
+            element={
+              <Profile
+                onSelectCard={handleSelectedCard}
+                clothingItems={clothingItems}
+                onCreateModal={handleCreateModal}
+              />
+            }
           />
         </Route>
-        <ProtectedRoute isLoggedIn={isLoggedIn} path="/profile">
-          <Profile
-            onSelectCard={handleSelectedCard}
-            clothingItems={clothingItems}
-            onCreateModal={handleCreateModal}
-          />
-        </ProtectedRoute>
       </Routes>
       <Footer />
       {activeModal === "create" && (

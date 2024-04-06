@@ -1,7 +1,7 @@
 import weatherOptions from "../../utils/constants.js";
 import { useContext } from "react";
 import CurrentTempatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.js";
-import imageDefault from "../../images/Day/cloudy.svg";
+import imageDefault from "../../images/Day/sunny.svg";
 
 const WeatherCard = ({ day, weatherType, weatherTemp = "" }) => {
   const { currentTemperatureUnit } = useContext(CurrentTempatureUnitContext);
@@ -9,6 +9,7 @@ const WeatherCard = ({ day, weatherType, weatherTemp = "" }) => {
     return option.day === day && option.type.toLowerCase() === weatherType;
   });
   const imageSrcUrl = weatherOption?.url || imageDefault;
+  console.log(imageDefault);
 
   return (
     <section className="weather" id="weather">

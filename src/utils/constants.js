@@ -39,58 +39,58 @@ export const defaultClothingItems = [
 
 const weatherOptions = [
   {
-    url: require("../images/Day/rain.svg").default,
+    url: "se_project_react/src/images/Day/rain.svg",
     day: true,
     type: "rain",
   },
   {
-    url: require("../images/Day/storm.svg").default,
+    url: "se_project_react/src/images/Day/storm.svg",
     day: true,
     type: "storm",
   },
   {
-    url: require("../images/Day/snow.svg").default,
+    url: "se_project_react/src/images/Day/snow.svg",
     day: true,
     type: "snow",
   },
-  { url: require("../images/Day/fog.svg").default, day: true, type: "fog" },
+  { url: "../images/Day/fog.svg", day: true, type: "fog" },
   {
-    url: require("../images/Day/cloudy.svg").default,
+    url: "../images/Day/cloudy.svg",
     day: true,
     type: "clouds",
   },
   {
-    url: require("../images/Day/sunny.svg").default,
+    url: "se_project_react/src/images/Day/sunny.svg",
     day: true,
     type: "sunny",
   },
   {
-    url: require("../images/Night/moon.svg").default,
+    url: "../images/Night/moon.svg",
     day: false,
     type: "moon",
   },
   {
-    url: require("../images/Night/nightCloud.svg").default,
+    url: "../images/Night/nightCloud.svg",
     day: false,
     type: "clouds",
   },
   {
-    url: require("../images/Night/nightRain.svg").default,
+    url: "../images/Night/nightRain.svg",
     day: false,
     type: "rain",
   },
   {
-    url: require("../images/Night/nightStorm.svg").default,
+    url: "../images/Night/nightStorm.svg",
     day: false,
     type: "storm",
   },
   {
-    url: require("../images/Night/nightSnow.svg").default,
+    url: "../images/Night/nightSnow.svg",
     day: false,
     type: "snow",
   },
   {
-    url: require("../images/Night/nightFog.svg").default,
+    url: "../images/Night/nightFog.svg",
     day: false,
     type: "fog",
   },
