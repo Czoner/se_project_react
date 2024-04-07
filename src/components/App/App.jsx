@@ -15,6 +15,7 @@ import Profile from "../Profile/Profile.jsx";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import * as auth from "../Auth/auth.js";
 import SignInModal from "../ModalWithForm/SignInModal.jsx";
+import { setToken } from "../../utils/token.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -85,12 +86,12 @@ function App() {
     if (!username || !password) {
       return;
     }
-
     auth
       .signIn(email, password)
       .then((data) => {
         console.log(data);
         if (data.jwt) {
+          setToken(data.jwt);
           setUserData(data.user);
           setIsLoggedIn(true);
           navigate("/profile");
