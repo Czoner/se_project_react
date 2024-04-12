@@ -49,18 +49,18 @@ const weatherOptions = [
     type: "storm",
   },
   {
-    url: "se_project_react/src/images/Day/snow.svg",
+    url: "../../images/Day/snow.svg",
     day: true,
     type: "snow",
   },
   { url: "../images/Day/fog.svg", day: true, type: "fog" },
   {
-    url: "../images/Day/cloudy.svg",
+    url: "../../images/Day/cloudy.svg",
     day: true,
     type: "clouds",
   },
   {
-    url: "se_project_react/src/images/Day/sunny.svg",
+    url: "../images/Day/sunny.svg",
     day: true,
     type: "sunny",
   },
