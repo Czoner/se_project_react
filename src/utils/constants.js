@@ -1,3 +1,14 @@
+import rain from "../images/Day/rain.svg";
+import storm from "../images/Day/storm.svg";
+import snow from "../images/Day/snow.svg";
+import fog from "../images/Day/fog.svg";
+import cloudy from "../images/Day/cloudy.svg";
+import sunny from "../images/Day/sunny.svg";
+import moon from "../images/Night/moon.svg";
+import nightCloud from "../images/Night/nightCloud.svg";
+import nightRain from "../images/Night/nightRain.svg";
+import nightStorm from "../images/Night/nightStorm.svg";
+
 export const defaultClothingItems = [
   {
     _id: 0,
@@ -39,43 +50,43 @@ export const defaultClothingItems = [
 
 const weatherOptions = [
   {
-    url: "se_project_react/src/images/Day/rain.svg",
+    url: rain,
     day: true,
     type: "rain",
   },
   {
-    url: "se_project_react/src/images/Day/storm.svg",
+    url: storm,
     day: true,
     type: "storm",
   },
   {
-    url: "../../images/Day/snow.svg",
+    url: snow,
     day: true,
     type: "snow",
   },
-  { url: "../images/Day/fog.svg", day: true, type: "fog" },
+  { url: fog, day: true, type: "fog" },
   {
-    url: "../../images/Day/cloudy.svg",
+    url: cloudy,
     day: true,
     type: "clouds",
   },
   {
-    url: "../images/Day/sunny.svg",
+    url: sunny,
     day: true,
     type: "sunny",
   },
   {
-    url: "../images/Night/moon.svg",
+    url: moon,
     day: false,
     type: "moon",
   },
   {
-    url: "../images/Night/nightCloud.svg",
+    url: nightCloud,
     day: false,
     type: "clouds",
   },
   {
-    url: "../images/Night/nightRain.svg",
+    url: nightRain,
     day: false,
     type: "rain",
   },

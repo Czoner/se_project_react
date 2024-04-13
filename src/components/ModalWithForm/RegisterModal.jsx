@@ -13,15 +13,15 @@ const RegisterModal = ({
     email: "",
     password: "",
   });
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    handleSignUp(values);
-    console.log("it worked");
-  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setValues((prevValues) => ({ ...prevValues, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleSignUp(values);
   };
 
   return (

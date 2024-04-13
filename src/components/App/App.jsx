@@ -75,7 +75,7 @@ function App() {
   //Singing in and out from the modals
   const handleSignUp = ({ name, avatar, email, password }) => {
     auth
-      .signUp(name, avatar, email, password)
+      .signUp({ name, avatar, email, password })
       .then(() => {
         navigate("/profile");
       })

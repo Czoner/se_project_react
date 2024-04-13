@@ -1,8 +1,8 @@
 import processServerResponse from "../../utils/weatherApi";
 const baseUrl = "http://localhost:3001";
 
-export const signUp = (name, avatar, email, password) => {
-  console.log(JSON.stringify(name, avatar, email, password));
+export const signUp = ({ name, avatar, email, password }) => {
+  //console.log(JSON.stringify({ name, avatar, email, password }));
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
