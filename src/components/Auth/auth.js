@@ -1,5 +1,5 @@
 import processServerResponse from "../../utils/weatherApi";
-const baseUrl = "http://localhost:3001";
+import { baseUrl } from "../../utils/api";
 
 export const signUp = ({ name, avatar, email, password }) => {
   //console.log(JSON.stringify({ name, avatar, email, password }));
@@ -10,15 +10,13 @@ export const signUp = ({ name, avatar, email, password }) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name, avatar, email, password }),
-  })
-    .then((res) => {
-      return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-    })
-    .then(processServerResponse);
+  }).then((res) => {
+    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+  });
 };
 
 export const signIn = ({ email, password }) => {
-  fetch(`${baseUrl}/signin`, {
+  return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -26,7 +24,17 @@ export const signIn = ({ email, password }) => {
     body: JSON.stringify({ email, password }),
   })
     .then((res) => {
-      localStorage.setItem("jwt", res.token);
+      return localStorage.setItem("jwt", res.token);
     })
     .then(processServerResponse);
+};
+
+export const getUser = (token) => {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(processServerResponse);
 };

@@ -8,6 +8,8 @@ import moon from "../images/Night/moon.svg";
 import nightCloud from "../images/Night/nightCloud.svg";
 import nightRain from "../images/Night/nightRain.svg";
 import nightStorm from "../images/Night/nightStorm.svg";
+import nightSnow from "../images/Night/nightSnow.svg";
+import nightFog from "../images/Night/nightFog.svg";
 
 export const defaultClothingItems = [
   {
@@ -91,17 +93,17 @@ const weatherOptions = [
     type: "rain",
   },
   {
-    url: "../images/Night/nightStorm.svg",
+    url: nightStorm,
     day: false,
     type: "storm",
   },
   {
-    url: "../images/Night/nightSnow.svg",
+    url: nightSnow,
     day: false,
     type: "snow",
   },
   {
-    url: "../images/Night/nightFog.svg",
+    url: nightFog,
     day: false,
     type: "fog",
   },

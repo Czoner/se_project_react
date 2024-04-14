@@ -5,11 +5,12 @@ export const baseUrl = "http://localhost:3001";
 export const getItems = () =>
   fetch(`${baseUrl}/items`).then(processServerResponse);
 
-export const postItems = ({ name, imageUrl, weather }) =>
-  fetch(`${baseUrl}/items`, {
+export const postItems = ({ name, imageUrl, weather, token }) => {
+  return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-type": "application/json",
+      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       name: name,
@@ -17,9 +18,12 @@ export const postItems = ({ name, imageUrl, weather }) =>
       weather: weather,
     }),
   }).then(processServerResponse);
-
-export const deleteItems = (cardid) =>
+};
+export const deleteItems = (cardid, token) =>
   fetch(`${baseUrl}/items/${cardid}`, {
     method: "DELETE",
-    headers: { "Content-type": "application/json" },
+    headers: {
+      "Content-type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
   }).then(processServerResponse);

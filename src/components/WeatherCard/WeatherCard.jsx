@@ -9,7 +9,6 @@ const WeatherCard = ({ day, weatherType, weatherTemp = "" }) => {
     return option.day === day && option.type.toLowerCase() === weatherType;
   });
   const imageSrcUrl = weatherOption?.url || imageDefault;
-  console.log(imageSrcUrl);
 
   return (
     <section className="weather" id="weather">

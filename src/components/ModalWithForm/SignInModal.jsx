@@ -24,6 +24,7 @@ const SignInModal = ({ isOpen, handleCloseModal, isLoading, handleSignIn }) => {
       buttontext2="or Sign up"
       isOpen={isOpen}
       onClose={handleCloseModal}
+      onSubmit={handleSubmit}
     >
       <label className="modal__label">
         Email
