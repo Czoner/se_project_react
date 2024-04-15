@@ -15,18 +15,15 @@ export const signUp = ({ name, avatar, email, password }) => {
   });
 };
 
-export const signIn = ({ email, password }) => {
+export const signIn = (email, password) => {
   return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
-  })
-    .then((res) => {
-      return localStorage.setItem("jwt", res.token);
-    })
-    .then(processServerResponse);
+  }).then(processServerResponse);
 };
 
 export const getUser = (token) => {

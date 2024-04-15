@@ -29,6 +29,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [userData, setUserData] = useState({ email: "", password: "" });
+  const [currentUser, setCurrentUser] = useState({ name: "" });
 
   const navigate = useNavigate();
 
@@ -87,21 +88,24 @@ function App() {
   };
 
   const handleSignIn = ({ email, password }) => {
-    if (!username || !password) {
+    if (!email || !password) {
       return;
     }
+
     auth
       .signIn(email, password)
-      .then((data) => {
-        console.log(data);
-        if (data.jwt) {
-          setToken(data.jwt);
-          setUserData(data.user);
+      .then((res) => {
+        console.log(res);
+        if (res.token) {
+          setUserData(res.user);
           setIsLoggedIn(true);
           navigate("/profile");
         }
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.error(err);
+        console.log("this is wrong ");
+      });
   };
 
   const onAddItem = (values) => {

@@ -14,7 +14,7 @@ const SignInModal = ({ isOpen, handleCloseModal, isLoading, handleSignIn }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin(data);
+    handleSignIn(values);
   };
 
   return (
