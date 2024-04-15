@@ -95,8 +95,8 @@ function App() {
     auth
       .signIn(email, password)
       .then((res) => {
-        console.log(res);
         if (res.token) {
+          setToken(res.token);
           setUserData(res.user);
           setIsLoggedIn(true);
           navigate("/profile");
@@ -108,10 +108,13 @@ function App() {
       });
   };
 
-  const onAddItem = (values) => {
+  const onAddItem = (values, token) => {
     setIsLoading(true);
-    postItems(values)
+    console.log(values, token);
+    debugger;
+    postItems(values, token)
       .then((res) => {
+        console.log(res);
         setClothingItems([res, ...clothingItems]);
         handleCloseModal();
       })
@@ -149,12 +152,11 @@ function App() {
       .catch((err) => {
         console.error(err);
       });
-
     auth
       .getUser(jwt)
-      .then(({ username, password }) => {
+      .then((data) => {
         setIsLoggedIn(true);
-        setUserData({ username, password });
+        setUserData(data);
         navigate("/profile");
       })
       .catch((err) => {

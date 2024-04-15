@@ -5,7 +5,8 @@ export const baseUrl = "http://localhost:3001";
 export const getItems = () =>
   fetch(`${baseUrl}/items`).then(processServerResponse);
 
-export const postItems = ({ name, imageUrl, weather, token }) => {
+export const postItems = ({ name, imageUrl, weather }, token) => {
+  // console.log(JSON.stringify({ name, imageUrl, weather, jwt }));
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -13,9 +14,9 @@ export const postItems = ({ name, imageUrl, weather, token }) => {
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
-      name: name,
-      imageUrl: imageUrl,
-      weather: weather,
+      name,
+      imageUrl,
+      weather,
     }),
   }).then(processServerResponse);
 };
