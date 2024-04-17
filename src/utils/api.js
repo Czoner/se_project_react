@@ -14,17 +14,18 @@ export const postItems = ({ name, imageUrl, weather }, token) => {
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
-      name,
-      imageUrl,
-      weather,
+      name: name,
+      imageUrl: imageUrl,
+      weather: weather,
     }),
   }).then(processServerResponse);
 };
-export const deleteItems = (cardid, token) =>
-  fetch(`${baseUrl}/items/${cardid}`, {
+export const deleteItems = (cardid, token) => {
+  return fetch(`${baseUrl}/items/${cardid}`, {
     method: "DELETE",
     headers: {
       "Content-type": "application/json",
       authorization: `Bearer ${token}`,
     },
   }).then(processServerResponse);
+};

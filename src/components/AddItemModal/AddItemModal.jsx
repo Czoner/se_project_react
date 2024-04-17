@@ -1,7 +1,6 @@
 import React from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import { useForm } from "../Hooks/useForm";
-import { getToken } from "../../utils/token.js";
 
 // onAddItem refers to handleAddItemSubmit, which is declared in App.js
 const AddItemModal = ({ isOpen, onAddItem, handleCloseModal, isLoading }) => {
@@ -13,7 +12,7 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal, isLoading }) => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    onAddItem(values, getToken());
+    onAddItem(values);
   }
 
   return (

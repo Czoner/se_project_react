@@ -45,8 +45,7 @@ function App() {
     setActiveModal("signIn");
   };
 
-  const handleCloseModal = (e) => {
-    e.preventDefault();
+  const handleCloseModal = () => {
     setActiveModal("");
   };
 
@@ -61,7 +60,8 @@ function App() {
   };
 
   const handleDeleteCard = (card) => {
-    deleteItems(card._id)
+    const token = getToken();
+    deleteItems(card._id, token)
       .then(() => {
         const itemList = clothingItems.filter((item) => {
           return item._id !== card._id;
@@ -80,6 +80,7 @@ function App() {
       .signUp({ name, avatar, email, password })
       .then(() => {
         setIsLoggedIn(true);
+        setCurrentUser({ name, avatar, email, password });
         navigate("/profile");
       })
       .catch((err) => {
@@ -108,14 +109,13 @@ function App() {
       });
   };
 
-  const onAddItem = (values, token) => {
+  const onAddItem = (values) => {
+    const token = getToken();
     setIsLoading(true);
-    console.log(values, token);
-    debugger;
     postItems(values, token)
       .then((res) => {
         console.log(res);
-        setClothingItems([res, ...clothingItems]);
+        setClothingItems([res.data, ...clothingItems]);
         handleCloseModal();
       })
       .catch((err) => {
@@ -131,6 +131,7 @@ function App() {
     if (!jwt) {
       return;
     }
+
     getForecastWeather()
       .then((data) => {
         const tempature = parseWeatherData(data);
@@ -168,11 +169,12 @@ function App() {
     <CurrentTempatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
-      <CurrentUserContent.Provider value={currentUser} isLoggedIn={isLoggedIn}>
+      <CurrentUserContent.Provider value={userData} isLoggedIn={isLoggedIn}>
         <Header
           onCreateModal={handleCreateModal}
           onSignUpModal={handleSignUpModal}
           onSignInModal={handleSingInModal}
+          name={userData.name}
         />
         <Routes>
           <Route
@@ -196,6 +198,8 @@ function App() {
                   onSelectCard={handleSelectedCard}
                   clothingItems={clothingItems}
                   onCreateModal={handleCreateModal}
+                  name={userData.name}
+                  avatar={userData.avatar}
                 />
               }
             />

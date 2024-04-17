@@ -3,10 +3,16 @@ import "./Profile.css";
 import SideBar from "../SideBar/SideBar.jsx";
 import ClothesSection from "../ClothesSection/ClothesSection.jsx";
 
-const Profile = ({ clothingItems, onSelectCard, onCreateModal }) => (
+const Profile = ({
+  clothingItems,
+  onSelectCard,
+  onCreateModal,
+  name,
+  avatar,
+}) => (
   <div className="profile">
     <section className="profile-sidebar">
-      <SideBar />
+      <SideBar name={name} avatar={avatar} />
     </section>
     <section className="profile-clothesSection">
       <ClothesSection

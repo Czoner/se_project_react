@@ -3,6 +3,7 @@ const ItemCard = ({ item, onSelectCard }) => {
   const onClick = () => {
     onSelectCard(item);
   };
+
   return (
     <div>
       <div className="card_list">
