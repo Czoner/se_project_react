@@ -1,3 +1,6 @@
+import React from "react";
+import { CurrentUserContent } from "../../contexts/CurrentUserContext";
+
 const ItemModal = ({ selectedCard, onClose, handleDeleteCard }) => {
   return (
     <div className={"modal"}>

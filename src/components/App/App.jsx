@@ -169,12 +169,13 @@ function App() {
     <CurrentTempatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
-      <CurrentUserContent.Provider value={userData} isLoggedIn={isLoggedIn}>
+      <CurrentUserContent.Provider value={userData}>
         <Header
           onCreateModal={handleCreateModal}
           onSignUpModal={handleSignUpModal}
           onSignInModal={handleSingInModal}
           name={userData.name}
+          isLoggedIn={isLoggedIn}
         />
         <Routes>
           <Route

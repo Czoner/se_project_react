@@ -18,6 +18,14 @@
   align-items: center;
 }
 
+.header__avatar-img {
+  width: 40px;
+  height: 40px;
+  margin-left: 12px;
+  border: 1px;
+  border-radius: 50%;
+}
+
 .header__button {
   border: none;
   background-color: transparent;
