@@ -16,7 +16,6 @@ const Header = ({
   const currentUser = React.useContext(CurrentUserContent);
   const profileName = currentUser.name;
 
-  console.log(profileName);
   return (
     <header className="header">
       <div className="header__logo">

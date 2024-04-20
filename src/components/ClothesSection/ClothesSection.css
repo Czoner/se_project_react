@@ -28,6 +28,16 @@
   gap: 20px;
 }
 
+.card-items_visible {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card-items_hidden {
+  display: none;
+}
+
 .function-section {
   display: flex;
   gap: 20px;
