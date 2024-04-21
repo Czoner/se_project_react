@@ -4,28 +4,15 @@ import ItemCard from "../ItemCard/ItemCard.jsx";
 import "./ClothesSection.css";
 
 const ClothesSection = ({ clothingItems, onSelectCard, onCreateModal }) => {
-  debugger;
   const currentUser = React.useContext(CurrentUserContent);
-  const ownerItems = clothingItems.map((item) => {
-    return item._id;
+
+  const bussine = clothingItems.map((item) => {
+    return item.owner;
   });
 
-  const isOwn = ownerItems === currentUser._id;
+  const isOwn = bussine.includes(currentUser._id);
 
-  ownerItems.forEach((item) => {
-    console.log(item);
-    if (item === currentUser._id) {
-      return "card-items_visible";
-    } else {
-      return "card-items_hidden";
-    }
-  });
-
-  console.log(ownerItems);
-
-  const cardItems = `card-items ${
-    isOwn ? "card-items_visible" : "card-items_hidden"
-  }`;
+  const cardItems = `${isOwn ? "card-items_visible" : "card-items_hidden"}`;
 
   return (
     <div className="itemSection">

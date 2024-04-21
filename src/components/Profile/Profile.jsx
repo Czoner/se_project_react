@@ -9,10 +9,15 @@ const Profile = ({
   onCreateModal,
   name,
   avatar,
+  onEditProfileModal,
 }) => (
   <div className="profile">
     <section className="profile-sidebar">
-      <SideBar name={name} avatar={avatar} />
+      <SideBar
+        name={name}
+        avatar={avatar}
+        onEditProfileModal={onEditProfileModal}
+      />
     </section>
     <section className="profile-clothesSection">
       <ClothesSection

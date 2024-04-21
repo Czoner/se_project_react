@@ -17,6 +17,7 @@ import * as auth from "../Auth/auth.js";
 import SignInModal from "../ModalWithForm/SignInModal.jsx";
 import { setToken, getToken } from "../../utils/token.js";
 import { CurrentUserContent } from "../../contexts/CurrentUserContext.jsx";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -35,6 +36,10 @@ function App() {
 
   const handleCreateModal = () => {
     setActiveModal("create");
+  };
+
+  const handleEditProfileModal = () => {
+    setActiveModal("editProfile");
   };
 
   const handleSignUpModal = () => {
@@ -201,6 +206,7 @@ function App() {
                   onCreateModal={handleCreateModal}
                   name={userData.name}
                   avatar={userData.avatar}
+                  onEditProfileModal={handleEditProfileModal}
                 />
               }
             />
@@ -212,6 +218,13 @@ function App() {
             handleCloseModal={handleCloseModal}
             isOpen={activeModal === "create"}
             onAddItem={onAddItem}
+            isLoading={isLoading}
+          />
+        )}
+        {activeModal === "editProfile" && (
+          <EditProfileModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "editProfile"}
             isLoading={isLoading}
           />
         )}
