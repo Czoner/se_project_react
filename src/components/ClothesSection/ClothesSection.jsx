@@ -6,13 +6,9 @@ import "./ClothesSection.css";
 const ClothesSection = ({ clothingItems, onSelectCard, onCreateModal }) => {
   const currentUser = React.useContext(CurrentUserContent);
 
-  const bussine = clothingItems.map((item) => {
-    return item.owner;
-  });
-
-  const isOwn = bussine.includes(currentUser._id);
-
-  const cardItems = `${isOwn ? "card-items_visible" : "card-items_hidden"}`;
+  const filteredClothingItems = clothingItems.filter(
+    (item) => item.owner === currentUser._id
+  );
 
   return (
     <div className="itemSection">
@@ -23,8 +19,8 @@ const ClothesSection = ({ clothingItems, onSelectCard, onCreateModal }) => {
         </button>
       </div>
 
-      <div className={cardItems}>
-        {clothingItems.map((x) => (
+      <div className="card-items">
+        {filteredClothingItems.map((x) => (
           <ItemCard key={x._id || x.id} item={x} onSelectCard={onSelectCard} />
         ))}
       </div>
