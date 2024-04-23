@@ -3,7 +3,14 @@ import ItemCard from "../ItemCard/ItemCard";
 import { useContext } from "react";
 import CurrentTempatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
-function Main({ weatherTemp, weatherType, onSelectCard, day, clothingItems }) {
+function Main({
+  weatherTemp,
+  weatherType,
+  onSelectCard,
+  day,
+  clothingItems,
+  onCardLike,
+}) {
   const { currentTemperatureUnit } = useContext(CurrentTempatureUnitContext);
   const temp = weatherTemp?.tempature?.[currentTemperatureUnit] || 999;
 
@@ -45,6 +52,7 @@ function Main({ weatherTemp, weatherType, onSelectCard, day, clothingItems }) {
               key={x._id || x.id}
               item={x}
               onSelectCard={onSelectCard}
+              onCardLike={onCardLike}
             />
           ))}
         </div>

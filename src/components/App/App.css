@@ -50,12 +50,10 @@
   line-height: 20px;
   letter-spacing: 0em;
   text-align: center;
-  position: absolute;
-  top: 15px;
   background-color: white;
   border-radius: 4px;
   padding: 0 12px;
-  margin: 0 125px;
+  margin-left: 100px;
 }
 
 .card_items {
@@ -64,4 +62,19 @@
   gap: 20px;
   justify-content: center;
   margin-top: 20px;
+}
+
+.card_info {
+  display: flex;
+  position: absolute;
+  top: 15px;
+}
+
+.card_like-button {
+  background: url("../../images/Like.svg") center no-repeat;
+  width: 18px;
+  height: 15px;
+  border: none;
+  margin-left: 10px;
+  cursor: pointer;
 }

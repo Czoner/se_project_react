@@ -29,3 +29,23 @@ export const deleteItems = (cardid, token) => {
     },
   }).then(processServerResponse);
 };
+
+export const addCardLike = (cardid, token) => {
+  return fetch(`${baseUrl}/items/${cardid}`, {
+    method: "PUT",
+    headers: {
+      "Content-type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(processServerResponse);
+};
+
+export const removeCardLike = (cardid, token) => {
+  return fetch(`${baseUrl}/items/${cardid}`, {
+    method: "DELETE",
+    headers: {
+      "Content-type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(processServerResponse);
+};
