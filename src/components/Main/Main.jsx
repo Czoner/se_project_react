@@ -47,14 +47,16 @@ function Main({
       <section className="card_section" id="card-selection">
         Today is {temp} {currentTemperatureUnit} / You may want to wear:
         <div className="card_items">
-          {filteredCards.map((x) => (
-            <ItemCard
-              key={x._id || x.id}
-              item={x}
-              onSelectCard={onSelectCard}
-              onCardLike={onCardLike}
-            />
-          ))}
+          {filteredCards.map((x) => {
+            return (
+              <ItemCard
+                key={x._id || x.id}
+                item={x}
+                onCardLike={onCardLike}
+                onSelectCard={onSelectCard}
+              />
+            );
+          })}
         </div>
       </section>
     </main>

@@ -1,8 +1,9 @@
 const ItemCard = ({ item, onSelectCard, onCardLike }) => {
   const imageCard = item.imageUrl;
-  console.log(item);
+
   const handleLike = (item) => {
     onCardLike(item._id);
+    console.log(item);
   };
   const onClick = () => {
     onSelectCard(item);
@@ -22,7 +23,9 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
           className="card_like-button"
           type="button"
           aria-label="Like"
-          onClick={handleLike}
+          onClick={(item) => {
+            handleLike(item);
+          }}
         ></button>
       </div>
     </div>

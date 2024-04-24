@@ -26,18 +26,17 @@ export const signIn = (email, password) => {
   }).then(processServerResponse);
 };
 
-export const getUser = (token) => {
-  return fetch(`${baseUrl}/users/me`, {
+export const getUser = (token) =>
+  fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
   }).then(processServerResponse);
-};
 
-export const updateUser = ({ name, avatar }, token) => {
-  return fetch(`${baseUrl}/users/me`, {
+export const updateUser = ({ name, avatar }, token) =>
+  fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
       Accept: "application/json",
@@ -46,4 +45,3 @@ export const updateUser = ({ name, avatar }, token) => {
     },
     body: JSON.stringify({ name, avatar }),
   }).then(processServerResponse);
-};
