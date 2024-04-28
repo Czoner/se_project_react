@@ -1,9 +1,17 @@
+import React from "react";
+import { CurrentUserContent } from "../../contexts/CurrentUserContext";
+
 const ItemCard = ({ item, onSelectCard, onCardLike }) => {
+  const currentUser = React.useContext(CurrentUserContent);
   const imageCard = item.imageUrl;
 
+  const isLiked = item.likes.some((id) => id === currentUser._id);
+  const likedButtonClassName = `card_like-button ${
+    isLiked ? "card_like-button_active" : "card_like-button_hidden"
+  }`;
+
   const handleLike = (item) => {
-    onCardLike(item._id);
-    console.log(item);
+    onCardLike(item._id, isLiked);
   };
   const onClick = () => {
     onSelectCard(item);
@@ -20,10 +28,10 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
       <div className="card_info">
         <div className="card_name">{item.name}</div>
         <button
-          className="card_like-button"
+          className={`${likedButtonClassName}`}
           type="button"
           aria-label="Like"
-          onClick={(item) => {
+          onClick={() => {
             handleLike(item);
           }}
         ></button>

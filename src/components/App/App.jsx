@@ -35,7 +35,6 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLiked, setIsLiked] = useState(true);
   const [userData, setUserData] = useState({ email: "", password: "" });
   const [currentUser, setCurrentUser] = useState({ name: "" });
 
@@ -138,20 +137,21 @@ function App() {
   // Handle card LIKES
 
   const handleCardLike = (id, isLiked) => {
-    console.log(id);
     const token = getToken();
     !isLiked
       ? addCardLike(id, token)
           .then((updatedCard) => {
-            setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
-            );
+            setClothingItems((cards) => {
+              return cards.map((item) =>
+                item._id === id ? updatedCard.data : item
+              );
+            });
           })
           .catch((err) => console.log(err))
       : removeCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
+              cards.map((item) => (item._id === id ? updatedCard.data : item))
             );
           })
           .catch((err) => console.log(err));
@@ -251,6 +251,8 @@ function App() {
                   name={userData.name}
                   avatar={userData.avatar}
                   onEditProfileModal={handleEditProfileModal}
+                  onCardLike={handleCardLike}
+                  isLoggedIn={isLoggedIn}
                 />
               }
             />

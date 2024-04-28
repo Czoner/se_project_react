@@ -31,7 +31,7 @@ export const deleteItems = (cardid, token) => {
 };
 
 export const addCardLike = (cardid, token) => {
-  return fetch(`${baseUrl}/items/${cardid}`, {
+  return fetch(`${baseUrl}/items/${cardid}/likes`, {
     method: "PUT",
     headers: {
       "Content-type": "application/json",
@@ -41,7 +41,7 @@ export const addCardLike = (cardid, token) => {
 };
 
 export const removeCardLike = (cardid, token) => {
-  return fetch(`${baseUrl}/items/${cardid}`, {
+  return fetch(`${baseUrl}/items/${cardid}/likes`, {
     method: "DELETE",
     headers: {
       "Content-type": "application/json",

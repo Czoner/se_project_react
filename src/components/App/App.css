@@ -78,3 +78,7 @@
   margin-left: 10px;
   cursor: pointer;
 }
+
+.card_like-button_active {
+  background: url("../../images/isLiked.svg") center no-repeat;
+}
