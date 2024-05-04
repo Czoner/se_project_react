@@ -1,7 +1,7 @@
 import Header from "../Header/Header";
 import "./App.css";
 import "../Footer/Footer.css";
-import Main from "../Main/Main";
+import main from "../main/main";
 import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
@@ -235,7 +235,7 @@ function App() {
             exact
             path="/"
             element={
-              <Main
+              <main
                 weatherTemp={temp}
                 weatherType={weatherType}
                 onSelectCard={handleSelectedCard}

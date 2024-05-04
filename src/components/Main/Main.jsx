@@ -3,7 +3,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import { useContext } from "react";
 import CurrentTempatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
-function Main({
+function main({
   weatherTemp,
   weatherType,
   onSelectCard,
@@ -63,4 +63,4 @@ function Main({
   );
 }
 
-export default Main;
+export default main;
