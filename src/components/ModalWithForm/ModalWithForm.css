@@ -59,6 +59,16 @@
   max-height: 610px;
 }
 
+.modal__description {
+  text-align: center;
+  font-family: "CabinetGrotesk-Regular", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  width: 367px;
+  margin-bottom: 40px;
+}
+
 .modal__preview {
   position: relative;
   display: flex;
@@ -112,7 +122,8 @@
   justify-content: space-between;
 }
 
-.modal__button {
+.modal__confirm {
+  padding: 60px 152px;
 }
 
 .modal__login_button {
@@ -128,6 +139,37 @@
   border: none;
   background-color: transparent;
   opacity: 0.5;
+  cursor: pointer;
+}
+
+.modal__button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button__delete {
+  border: none;
+  background-color: transparent;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+  color: #ff4d00;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.button__cancel {
+  border: none;
+  background-color: transparent;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
   cursor: pointer;
 }
 

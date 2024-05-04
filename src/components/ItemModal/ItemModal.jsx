@@ -1,19 +1,13 @@
 import React, { useState } from "react";
 import { CurrentUserContent } from "../../contexts/CurrentUserContext";
-import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal";
 
-const ItemModal = ({ selectedCard, handleCloseModal, handleDeleteCard }) => {
+const ItemModal = ({ selectedCard, handleCloseModal, deleteConfirmModal }) => {
   const currentUser = React.useContext(CurrentUserContent);
-  const [modalState, setModalState] = useState("");
 
   const isOwn = selectedCard.owner === currentUser._id;
   const itemDeleteButtonClassName = `modal__card_delete ${
     isOwn ? "modal__card_delete_visible" : "modal__card_delete_hidden"
   }`;
-  console.log(ConfirmDeleteModal);
-  const openModal = () => {
-    <ConfirmDeleteModal />;
-  };
 
   return (
     <div className={"modal"}>
@@ -36,7 +30,7 @@ const ItemModal = ({ selectedCard, handleCloseModal, handleDeleteCard }) => {
             </p>
           </div>
           <button
-            onClick={openModal}
+            onClick={deleteConfirmModal}
             type="button"
             className={`${itemDeleteButtonClassName}`}
           >

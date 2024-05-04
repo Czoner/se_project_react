@@ -37,8 +37,8 @@ const Header = ({
                 + Add clothes
               </button>
             </div>
-            <Link to="/profile">
-              <p className="header__signUp">{name}</p>
+            <Link to="/profile" className="header__signUp">
+              {name}
             </Link>
             {currentUser.avatar ? (
               <>

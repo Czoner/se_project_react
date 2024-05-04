@@ -24,6 +24,7 @@ import SignInModal from "../ModalWithForm/SignInModal.jsx";
 import { setToken, getToken } from "../../utils/token.js";
 import { CurrentUserContent } from "../../contexts/CurrentUserContext.jsx";
 import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
+import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal.jsx";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -297,16 +298,18 @@ function App() {
           <ItemModal
             selectedCard={selectedCard}
             handleCloseModal={handleCloseModal}
-            handleDeleteCard={() => {
-              handleDeleteCard(selectedCard);
-            }}
+            deleteConfirmModal={handleDeleteModal}
           />
         )}
         {activeModal === "delete" && (
           <ConfirmDeleteModal
-            handleCloseModal={handleCloseModal}
-            handleDeleteModal={handleDeleteModal}
-            isOpen={activeModal === "delete"}
+            onClose={handleCloseModal}
+            handleDeleteCard={() => {
+              handleDeleteCard(selectedCard);
+            }}
+            itemModal={() => {
+              handleSelectedCard(selectedCard);
+            }}
           />
         )}
       </CurrentUserContent.Provider>
