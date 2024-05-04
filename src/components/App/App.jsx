@@ -60,6 +60,10 @@ function App() {
     setActiveModal("");
   };
 
+  const handleDeleteModal = () => {
+    setActiveModal("delete");
+  };
+
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
@@ -292,10 +296,17 @@ function App() {
         {activeModal === "preview" && (
           <ItemModal
             selectedCard={selectedCard}
-            onClose={handleCloseModal}
+            handleCloseModal={handleCloseModal}
             handleDeleteCard={() => {
               handleDeleteCard(selectedCard);
             }}
+          />
+        )}
+        {activeModal === "delete" && (
+          <ConfirmDeleteModal
+            handleCloseModal={handleCloseModal}
+            handleDeleteModal={handleDeleteModal}
+            isOpen={activeModal === "delete"}
           />
         )}
       </CurrentUserContent.Provider>

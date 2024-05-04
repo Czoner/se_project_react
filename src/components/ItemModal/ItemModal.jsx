@@ -1,20 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { CurrentUserContent } from "../../contexts/CurrentUserContext";
+import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal";
 
-const ItemModal = ({ selectedCard, onClose, handleDeleteCard }) => {
+const ItemModal = ({ selectedCard, handleCloseModal, handleDeleteCard }) => {
   const currentUser = React.useContext(CurrentUserContent);
+  const [modalState, setModalState] = useState("");
 
   const isOwn = selectedCard.owner === currentUser._id;
   const itemDeleteButtonClassName = `modal__card_delete ${
     isOwn ? "modal__card_delete_visible" : "modal__card_delete_hidden"
   }`;
+  console.log(ConfirmDeleteModal);
+  const openModal = () => {
+    <ConfirmDeleteModal />;
+  };
 
   return (
     <div className={"modal"}>
       <div className="modal__preview">
         <button
           type="button"
-          onClick={onClose}
+          onClick={handleCloseModal}
           className="button__close"
         ></button>
         <img
@@ -30,7 +36,7 @@ const ItemModal = ({ selectedCard, onClose, handleDeleteCard }) => {
             </p>
           </div>
           <button
-            onClick={handleDeleteCard}
+            onClick={openModal}
             type="button"
             className={`${itemDeleteButtonClassName}`}
           >
