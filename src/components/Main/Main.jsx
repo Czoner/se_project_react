@@ -13,7 +13,7 @@ function Main({
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTempatureUnitContext);
   const temp = weatherTemp?.tempature?.[currentTemperatureUnit] || 999;
-  console.log("LOL");
+
   const getWeatherTemperature = () => {
     if (currentTemperatureUnit === "F") {
       if (temp >= 86) {
