@@ -1,7 +1,7 @@
 import Header from "../Header/Header";
 import "./App.css";
 import "../Footer/Footer.css";
-import Main from "../Main/main.jsx";
+import Main from "../Main/Main.jsx";
 import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
