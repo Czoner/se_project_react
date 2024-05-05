@@ -19,7 +19,7 @@ import {
 } from "../../utils/api";
 import Profile from "../Profile/Profile.jsx";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
-import * as auth from "../Auth/auth.js";
+import * as auth from "../Auth/auth.jsx";
 import SignInModal from "../ModalWithForm/SignInModal.jsx";
 import { setToken, getToken } from "../../utils/token.js";
 import { CurrentUserContent } from "../../contexts/CurrentUserContext.jsx";
