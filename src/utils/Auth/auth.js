@@ -1,5 +1,5 @@
-import processServerResponse from "../../utils/weatherApi";
-import { baseUrl } from "../../utils/api";
+import processServerResponse from "../weatherApi";
+import { baseUrl } from "../api";
 
 export const signUp = ({ name, avatar, email, password }) => {
   //console.log(JSON.stringify({ name, avatar, email, password }));
