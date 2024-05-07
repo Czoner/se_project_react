@@ -1,6 +1,6 @@
 import weatherOptions from "../../utils/constants.js";
 import { useContext } from "react";
-import CurrentTempatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.js";
+import CurrentTempatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import imageDefault from "../../images/Day/rain.svg";
 
 const WeatherCard = ({ day, weatherType, weatherTemp = "" }) => {
