@@ -1,9 +1,16 @@
 # Project 10 WTWR
 
 This project was made using React and Javascript. The project is to show you what to wear depending on what is the tempature displayed.
+
+## Front-end
+
 [https://github.com/Czoner/se_project_react]
 
-## Project 10 features:
+### Back-end
+
+[https://github.com/Czoner/se_project_express]
+
+#### Project 10 features:
 
 - HTML/CSS
 - Figma Design
