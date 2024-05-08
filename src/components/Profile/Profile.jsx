@@ -12,6 +12,7 @@ const Profile = ({
   onEditProfileModal,
   onCardLike,
   isLoggedIn,
+  handleLogOut,
 }) => (
   <div className="profile">
     <section className="profile-sidebar">
@@ -19,7 +20,7 @@ const Profile = ({
         name={name}
         avatar={avatar}
         onEditProfileModal={onEditProfileModal}
-        isLoggedIn={isLoggedIn}
+        handleLogOut={handleLogOut}
       />
     </section>
     <section className="profile-clothesSection">
@@ -28,6 +29,7 @@ const Profile = ({
         onSelectCard={onSelectCard}
         onCreateModal={onCreateModal}
         onCardLike={onCardLike}
+        isLoggedIn={isLoggedIn}
       />
     </section>
   </div>

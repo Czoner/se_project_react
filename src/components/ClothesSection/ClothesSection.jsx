@@ -8,6 +8,7 @@ const ClothesSection = ({
   onSelectCard,
   onCreateModal,
   onCardLike,
+  isLoggedIn,
 }) => {
   const currentUser = React.useContext(CurrentUserContent);
 
@@ -31,6 +32,7 @@ const ClothesSection = ({
             item={x}
             onSelectCard={onSelectCard}
             onCardLike={onCardLike}
+            isLoggedIn={isLoggedIn}
           />
         ))}
       </div>

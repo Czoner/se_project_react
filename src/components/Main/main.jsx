@@ -10,9 +10,10 @@ function Main({
   day,
   clothingItems,
   onCardLike,
+  isLoggedIn,
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTempatureUnitContext);
-  const temp = weatherTemp?.tempature?.[currentTemperatureUnit] || 999;
+  const temp = weatherTemp?.tempature?.[currentTemperatureUnit] || 0;
 
   const getWeatherTemperature = () => {
     if (currentTemperatureUnit === "F") {
@@ -54,6 +55,7 @@ function Main({
                 item={x}
                 onCardLike={onCardLike}
                 onSelectCard={onSelectCard}
+                isLoggedIn={isLoggedIn}
               />
             );
           })}

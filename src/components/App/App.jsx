@@ -21,7 +21,7 @@ import Profile from "../Profile/Profile.jsx";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import * as auth from "../../utils/Auth/auth.js";
 import SignInModal from "../ModalWithForm/SignInModal.jsx";
-import { setToken, getToken } from "../../utils/token.js";
+import { setToken, getToken, removeToken } from "../../utils/token.js";
 import { CurrentUserContent } from "../../contexts/CurrentUserContext.jsx";
 import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
 import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal.jsx";
@@ -36,8 +36,10 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userData, setUserData] = useState({ email: "", password: "" });
-  const [currentUser, setCurrentUser] = useState({ name: "" });
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
 
   const navigate = useNavigate();
 
@@ -96,7 +98,7 @@ function App() {
       .signUp({ name, avatar, email, password })
       .then(() => {
         setIsLoggedIn(true);
-        setCurrentUser({ name, avatar, email, password });
+        setUserData({ name, avatar, email, password });
         navigate("/profile");
       })
       .catch((err) => {
@@ -113,16 +115,31 @@ function App() {
       .signIn(email, password)
       .then((res) => {
         if (res.token) {
+          auth
+            .getUser(res.token)
+            .then((data) => {
+              setIsLoggedIn(true);
+              setUserData(data);
+              navigate("/profile");
+            })
+            .catch((err) => {
+              console.error(err);
+            });
           setToken(res.token);
-          setUserData(res.user);
-          setIsLoggedIn(true);
-          navigate("/profile");
+          handleCloseModal();
         }
       })
       .catch((err) => {
         console.error(err);
         console.log("this is wrong ");
       });
+  };
+
+  const handleLogOut = (e) => {
+    e.preventDefault();
+    setIsLoggedIn(false);
+    removeToken();
+    navigate("/");
   };
 
   // Handle Updating User Profile
@@ -181,9 +198,6 @@ function App() {
 
   useEffect(() => {
     const jwt = getToken();
-    if (!jwt) {
-      return;
-    }
 
     getForecastWeather()
       .then((data) => {
@@ -206,6 +220,10 @@ function App() {
       .catch((err) => {
         console.error(err);
       });
+
+    if (!jwt) {
+      return;
+    }
     auth
       .getUser(jwt)
       .then((data) => {
@@ -242,6 +260,7 @@ function App() {
                 day={days}
                 clothingItems={clothingItems}
                 onCardLike={handleCardLike}
+                isLoggedIn={isLoggedIn}
               />
             }
           />
@@ -257,6 +276,7 @@ function App() {
                   avatar={userData.avatar}
                   onEditProfileModal={handleEditProfileModal}
                   onCardLike={handleCardLike}
+                  handleLogOut={handleLogOut}
                   isLoggedIn={isLoggedIn}
                 />
               }

@@ -1,7 +1,7 @@
 import React from "react";
 import { CurrentUserContent } from "../../contexts/CurrentUserContext";
 
-const ItemCard = ({ item, onSelectCard, onCardLike }) => {
+const ItemCard = ({ item, onSelectCard, onCardLike, isLoggedIn }) => {
   const currentUser = React.useContext(CurrentUserContent);
   const imageCard = item.imageUrl;
 
@@ -17,6 +17,7 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
     onSelectCard(item);
   };
 
+  console.log(isLoggedIn);
   return (
     <div className="card_list">
       <img
@@ -27,14 +28,20 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
       />
       <div className="card_info">
         <div className="card_name">{item.name}</div>
-        <button
-          className={`${likedButtonClassName}`}
-          type="button"
-          aria-label="Like"
-          onClick={() => {
-            handleLike(item);
-          }}
-        ></button>
+        {isLoggedIn ? (
+          <>
+            <button
+              className={`${likedButtonClassName}`}
+              type="button"
+              aria-label="Like"
+              onClick={() => {
+                handleLike(item);
+              }}
+            ></button>
+          </>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

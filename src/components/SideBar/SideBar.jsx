@@ -1,17 +1,6 @@
-import { NavLink, useNavigate } from "react-router-dom";
 import "./SideBar.css";
-import { removeToken } from "../../utils/token";
 
-const SideBar = ({ name, avatar, onEditProfileModal, isLoggedIn }) => {
-  const navigate = useNavigate();
-
-  const handleLogOut = (e) => {
-    e.preventDefault();
-    removeToken();
-    navigate("/");
-    isLoggedIn = false;
-  };
-
+const SideBar = ({ name, avatar, onEditProfileModal, handleLogOut }) => {
   return (
     <div>
       <div className="user">
