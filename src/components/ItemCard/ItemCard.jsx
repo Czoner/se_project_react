@@ -17,7 +17,6 @@ const ItemCard = ({ item, onSelectCard, onCardLike, isLoggedIn }) => {
     onSelectCard(item);
   };
 
-  console.log(isLoggedIn);
   return (
     <div className="card_list">
       <img

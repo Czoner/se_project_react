@@ -303,6 +303,7 @@ function App() {
         {activeModal === "signUp" && (
           <RegisterModal
             handleCloseModal={handleCloseModal}
+            handleSingInModal={handleSingInModal}
             handleSignUp={handleSignUp}
             isOpen={activeModal === "signUp"}
           />
@@ -310,6 +311,7 @@ function App() {
         {activeModal === "signIn" && (
           <SignInModal
             handleCloseModal={handleCloseModal}
+            handleSignUpModal={handleSignUpModal}
             handleSignIn={handleSignIn}
             isOpen={activeModal === "signIn"}
           />

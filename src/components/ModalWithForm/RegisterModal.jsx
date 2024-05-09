@@ -6,6 +6,7 @@ const RegisterModal = ({
   handleCloseModal,
   isLoading,
   handleSignUp,
+  handleSingInModal,
 }) => {
   const [values, setValues] = useState({
     name: "",
@@ -32,6 +33,7 @@ const RegisterModal = ({
       isOpen={isOpen}
       onClose={handleCloseModal}
       onSubmit={handleSubmit}
+      onSign={handleSingInModal}
     >
       <label className="modal__label">
         Email*

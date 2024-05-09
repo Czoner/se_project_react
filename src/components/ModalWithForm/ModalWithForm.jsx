@@ -9,6 +9,7 @@ const ModalWithForm = ({
   onClose,
   name,
   onSubmit,
+  onSign,
 }) => {
   return (
     <div className={`modal modal_type_${title}`}>
@@ -24,7 +25,13 @@ const ModalWithForm = ({
             >
               {buttontext}
             </button>
-            <button className="modal__login_button">{buttontext2}</button>
+            <button
+              className="modal__login_button"
+              type="button"
+              onClick={onSign}
+            >
+              {buttontext2}
+            </button>
           </div>
         </form>
       </div>
