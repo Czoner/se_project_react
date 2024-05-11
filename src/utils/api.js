@@ -1,13 +1,12 @@
-import processServerResponse from "../utils/weatherApi.js";
+import { request } from "./Auth/auth.js";
 
 export const baseUrl = "http://localhost:3001";
 
-export const getItems = () =>
-  fetch(`${baseUrl}/items`).then(processServerResponse);
+export const getItems = () => request(`${baseUrl}/items`);
 
 export const postItems = ({ name, imageUrl, weather }, token) => {
   // console.log(JSON.stringify({ name, imageUrl, weather, jwt }));
-  return fetch(`${baseUrl}/items`, {
+  return request(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-type": "application/json",
@@ -18,34 +17,34 @@ export const postItems = ({ name, imageUrl, weather }, token) => {
       imageUrl: imageUrl,
       weather: weather,
     }),
-  }).then(processServerResponse);
+  });
 };
 export const deleteItems = (cardid, token) => {
-  return fetch(`${baseUrl}/items/${cardid}`, {
+  return request(`${baseUrl}/items/${cardid}`, {
     method: "DELETE",
     headers: {
       "Content-type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  }).then(processServerResponse);
+  });
 };
 
 export const addCardLike = (cardid, token) => {
-  return fetch(`${baseUrl}/items/${cardid}/likes`, {
+  return request(`${baseUrl}/items/${cardid}/likes`, {
     method: "PUT",
     headers: {
       "Content-type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  }).then(processServerResponse);
+  });
 };
 
 export const removeCardLike = (cardid, token) => {
-  return fetch(`${baseUrl}/items/${cardid}/likes`, {
+  return request(`${baseUrl}/items/${cardid}/likes`, {
     method: "DELETE",
     headers: {
       "Content-type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  }).then(processServerResponse);
+  });
 };
