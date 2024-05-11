@@ -9,7 +9,7 @@ const ModalWithForm = ({
   onClose,
   name,
   onSubmit,
-  onSign,
+  onSecondButtonClick,
 }) => {
   return (
     <div className={`modal modal_type_${title}`}>
@@ -28,7 +28,7 @@ const ModalWithForm = ({
             <button
               className="modal__login_button"
               type="button"
-              onClick={onSign}
+              onClick={onSecondButtonClick}
             >
               {buttontext2}
             </button>

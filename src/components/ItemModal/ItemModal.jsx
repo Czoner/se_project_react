@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { CurrentUserContent } from "../../contexts/CurrentUserContext";
 
-const ItemModal = ({ selectedCard, handleCloseModal, deleteConfirmModal }) => {
+const ItemModal = ({
+  selectedCard,
+  handleCloseModal,
+  deleteConfirmModal,
+  isLoggedIn,
+}) => {
   const currentUser = React.useContext(CurrentUserContent);
 
   const isOwn = selectedCard.owner === currentUser._id;
@@ -29,13 +34,19 @@ const ItemModal = ({ selectedCard, handleCloseModal, deleteConfirmModal }) => {
               Weather Type: {selectedCard.weather}
             </p>
           </div>
-          <button
-            onClick={deleteConfirmModal}
-            type="button"
-            className={`${itemDeleteButtonClassName}`}
-          >
-            Delete item
-          </button>
+          {isLoggedIn ? (
+            <>
+              <button
+                onClick={deleteConfirmModal}
+                type="button"
+                className={`${itemDeleteButtonClassName}`}
+              >
+                Delete item
+              </button>
+            </>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </div>

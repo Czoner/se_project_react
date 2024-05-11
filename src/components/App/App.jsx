@@ -63,6 +63,23 @@ function App() {
     setActiveModal("");
   };
 
+  // Handle esc key to close modals
+  useEffect(() => {
+    if (!activeModal) return;
+
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
+  // -------------------------------------
+
   const handleDeleteModal = () => {
     setActiveModal("delete");
   };
@@ -79,31 +96,27 @@ function App() {
 
   const handleDeleteCard = (card) => {
     const token = getToken();
-    deleteItems(card._id, token)
-      .then(() => {
+    const makeRequest = () => {
+      return deleteItems(card._id, token).then(() => {
         const itemList = clothingItems.filter((item) => {
           return item._id !== card._id;
         });
         setClothingItems(itemList);
-        handleCloseModal();
-      })
-      .catch((err) => {
-        console.error(err);
       });
+    };
+    handleSubmit(makeRequest);
   };
 
   //Singing in and out from the modals
   const handleSignUp = ({ name, avatar, email, password }) => {
-    auth
-      .signUp({ name, avatar, email, password })
-      .then(() => {
+    function makeRequest() {
+      auth.signUp({ name, avatar, email, password }).then(() => {
         setIsLoggedIn(true);
         setUserData({ name, avatar, email, password });
         navigate("/profile");
-      })
-      .catch((err) => {
-        console.error(err.message);
       });
+    }
+    handleSubmit(makeRequest);
   };
 
   const handleSignIn = ({ email, password }) => {
@@ -146,14 +159,12 @@ function App() {
 
   const handleUpdateUser = ({ name, avatar }) => {
     const token = getToken();
-    auth
-      .updateUser({ name, avatar }, token)
-      .then((res) => {
+    function makeRequest() {
+      return auth.updateUser({ name, avatar }, token).then((res) => {
         setUserData(res.user);
-      })
-      .catch((err) => {
-        console.error(err);
       });
+    }
+    handleSubmit(makeRequest);
   };
 
   // Handle card LIKES
@@ -176,25 +187,26 @@ function App() {
               cards.map((item) => (item._id === id ? updatedCard.data : item))
             );
           })
-          .catch((err) => console.log(err));
+          .catch(console.error);
   };
 
   const onAddItem = (values) => {
     const token = getToken();
-    setIsLoading(true);
-    postItems(values, token)
-      .then((res) => {
-        console.log(res);
+    const makeRequest = () => {
+      return postItems(values, token).then((res) => {
         setClothingItems([res.data, ...clothingItems]);
-        handleCloseModal();
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-      .finally(() => {
-        setIsLoading(false);
       });
+    };
+    handleSubmit(makeRequest);
   };
+
+  function handleSubmit(request) {
+    setIsLoading(true);
+    request()
+      .then(handleCloseModal)
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
+  }
 
   useEffect(() => {
     const jwt = getToken();
@@ -321,6 +333,7 @@ function App() {
             selectedCard={selectedCard}
             handleCloseModal={handleCloseModal}
             deleteConfirmModal={handleDeleteModal}
+            isLoggedIn={isLoggedIn}
           />
         )}
         {activeModal === "delete" && (
