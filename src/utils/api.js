@@ -1,6 +1,9 @@
 import { request } from "./Auth/auth.js";
 
-export const baseUrl = "http://localhost:3001";
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwr-web.happyforever.com"
+    : "http://localhost:3001";
 
 export const getItems = () => request(`${baseUrl}/items`);
 
