@@ -19,7 +19,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "vite",
-    "deploy": "npm run build &&  scp -r ./build/* ledes7080@wtwr-web.happyforever.com:/home/ledes7080/frontend"
+    "deploy": "npm run build &&  scp -r ./dist/* ledes7080@wtwr-web.happyforever.com:/home/ledes7080/frontend"
   },
   "eslintConfig": {
     "extends": [
