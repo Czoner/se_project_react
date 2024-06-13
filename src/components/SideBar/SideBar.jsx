@@ -2,7 +2,7 @@ import "./SideBar.css";
 
 const SideBar = ({ name, avatar, onEditProfileModal, handleLogOut }) => {
   return (
-    <div>
+    <div className="side-bar">
       <div className="user">
         <div>
           <img src={avatar} className="user-image" alt="userImg" />
