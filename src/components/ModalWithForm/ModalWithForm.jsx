@@ -28,7 +28,10 @@ const ModalWithForm = ({
             <button
               className="modal__login_button"
               type="button"
-              onClick={onSign}
+              onClick={() => {
+                console.log("button pressed");
+                onSign;
+              }}
             >
               {buttontext2}
             </button>
