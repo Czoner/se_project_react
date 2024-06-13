@@ -30,7 +30,7 @@ const ModalWithForm = ({
               type="button"
               onClick={() => {
                 debugger;
-                onSign;
+                onSign();
               }}
             >
               {buttontext2}
